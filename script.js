@@ -463,7 +463,8 @@ document.addEventListener("DOMContentLoaded", () => {
     predict();
   });
 
-  $("timeInput").addEventListener("change", predict);
+  $("timeInput").addEventListener("input", predict);
+$("timeInput").addEventListener("change", predict);
 
   $("stopSearch").addEventListener("input", renderStopList);
 
@@ -477,13 +478,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentPrediction = null;
 
-  function timeDemandFactor(hour) {
-    if (hour >= 7 && hour < 9) return 26;
-    if (hour >= 17 && hour < 20) return 32;
-    if (hour >= 12 && hour < 14) return 12;
-    if (hour >= 21 || hour < 6) return -12;
-    return 4;
+function timeDemandFactor(hour) {
+
+  if (hour < 6) {
+    return -14 + hour * 1.2;
   }
+
+  if (hour >= 6 && hour < 8) {
+    return 4 + (hour - 6) * 12;
+  }
+
+  if (hour >= 8 && hour < 10) {
+    return 28 - (hour - 8) * 9;
+  }
+
+  if (hour >= 10 && hour < 12) {
+    return 10 - (hour - 10) * 2;
+  }
+
+  if (hour >= 12 && hour < 14) {
+    return 8 + (hour - 12) * 4;
+  }
+
+  if (hour >= 14 && hour < 17) {
+    return 16 + (hour - 14) * 2;
+  }
+
+  if (hour >= 17 && hour < 18) {
+    return 24 + (hour - 17) * 10;
+  }
+
+  if (hour >= 18 && hour < 20) {
+    return 34 - (hour - 18) * 7;
+  }
+
+  if (hour >= 20 && hour < 22) {
+    return 20 - (hour - 20) * 8;
+  }
+
+  return 4 - (hour - 22) * 4;
+}
 
   function stopDemandFactor(stopIndex, totalStops) {
     const progress = totalStops <= 1 ? 0 : stopIndex / (totalStops - 1);
