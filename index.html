@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartBus Astana</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#" id="brandHome">
+    <span class="brand-icon">SB</span>
+    <span>
+      <strong>SmartBus Astana</strong>
+      <small>Occupancy prediction prototype</small>
+    </span>
+  </a>
+
+  <nav class="nav">
+    <button class="nav-btn active" data-page="home">Home</button>
+    <button class="nav-btn" data-page="analytics">Analytics</button>
+    <button class="nav-btn" data-page="saved">Saved Trips</button>
+    <button class="nav-btn" data-page="security">Security</button>
+  </nav>
+
+  <div class="auth-actions" id="guestActions">
+    <button class="btn btn-light" id="openLoginBtn">Log in</button>
+    <button class="btn btn-primary" id="openRegisterBtn">Register</button>
+  </div>
+
+  <div class="auth-actions hidden" id="userActions">
+    <button class="user-chip" id="profileBtn">Hi, <span id="headerUserName">User</span></button>
+    <button class="btn btn-light" id="logoutBtn">Log out</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HOME -->
+  <section class="page" id="page-home">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">ASTANA · SMART TRANSPORT</span>
+        <h1>Choose a bus before it gets crowded.</h1>
+        <p>
+          Select a route, stop and time. SmartBus estimates occupancy and gives
+          a simple recommendation based on simulated passenger-flow rules.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-large" id="heroPredictBtn">Make a prediction</button>
+          <button class="btn btn-light btn-large" id="continueGuestBtn">Continue as guest</button>
+        </div>
+        <p class="tiny">
+          Educational prototype. Occupancy values are simulated, not live CTS data.
+        </p>
+      </div>
+
+      <div class="hero-card">
+        <span class="hero-card-label">Current prediction</span>
+        <div class="hero-percent" id="heroPercent">--%</div>
+        <div class="hero-state" id="heroState">Choose a trip</div>
+        <div class="hero-mini-grid">
+          <div><small>Route</small><strong id="heroRoute">—</strong></div>
+          <div><small>Stop</small><strong id="heroStop">—</strong></div>
+          <div><small>Time</small><strong id="heroTime">—</strong></div>
+          <div><small>Next bus</small><strong id="heroNext">—</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="predictor">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">SMART FUNCTION</span>
+          <h2>Trip occupancy prediction</h2>
+        </div>
+        <span class="data-badge">Simulated data</span>
+      </div>
+
+      <div class="form-grid">
+        <label>
+          Route
+          <select id="routeSelect"></select>
+        </label>
+
+        <label>
+          Stop
+          <select id="stopSelect"></select>
+        </label>
+
+        <label>
+          Time
+          <input type="time" id="timeInput" value="18:00">
+        </label>
+
+        <button class="btn btn-primary form-button" id="predictBtn">Predict occupancy</button>
+      </div>
+
+      <div class="prediction-grid">
+        <div class="result-card">
+          <div class="metric-row">
+            <div>
+              <span>Occupancy</span>
+              <strong id="occupancyMetric">--%</strong>
+            </div>
+            <div>
+              <span>Passengers</span>
+              <strong id="passengersMetric">--</strong>
+            </div>
+            <div>
+              <span>Capacity</span>
+              <strong id="capacityMetric">--</strong>
+            </div>
+          </div>
+
+          <div class="status-line">
+            <span>Expected level</span>
+            <span class="status-pill status-medium" id="statusPill">Waiting</span>
+          </div>
+
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+
+          <div class="recommendation" id="recommendationBox">
+            <span>Smart recommendation</span>
+            <h3 id="recommendationTitle">Select a trip first</h3>
+            <p id="recommendationText">
+              SmartBus will compare the selected stop and time with simple demand rules.
+            </p>
+          </div>
+
+          <div class="action-row">
+            <button class="btn btn-dark" id="saveTripBtn">Save trip</button>
+            <button class="btn btn-light" id="resetBtn">Reset</button>
+          </div>
+
+          <p class="form-message" id="predictionMessage"></p>
+        </div>
+
+        <div class="stops-card">
+          <div class="stops-header">
+            <div>
+              <span class="eyebrow">ROUTE STOPS</span>
+              <h3 id="stopsTitle">Bus stops</h3>
+            </div>
+            <span class="stop-count" id="stopCount">0 stops</span>
+          </div>
+
+          <div class="search-row">
+            <input type="search" id="stopSearch" placeholder="Search stop...">
+            <button class="btn btn-light" id="clearSearchBtn">Clear</button>
+          </div>
+
+          <p class="form-message" id="searchMessage"></p>
+          <div class="stop-list" id="stopList"></div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ANALYTICS -->
+  <section class="page hidden" id="page-analytics">
+    <section class="panel page-panel">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">DATA ANALYSIS</span>
+          <h2>Occupancy analytics</h2>
+          <p class="subtext">
+            Calculated automatically from simulated project data for the selected route.
+          </p>
+        </div>
+
+        <label class="small-select">
+          Route
+          <select id="analyticsRouteSelect"></select>
+        </label>
+      </div>
+
+      <div class="analytics-grid">
+        <article class="analytics-card">
+          <span>Average occupancy</span>
+          <strong id="analyticsAverage">0%</strong>
+        </article>
+        <article class="analytics-card">
+          <span>Maximum occupancy</span>
+          <strong id="analyticsMaximum">0%</strong>
+        </article>
+        <article class="analytics-card">
+          <span>High-demand periods</span>
+          <strong id="analyticsHigh">0</strong>
+        </article>
+        <article class="analytics-card">
+          <span>Busiest time</span>
+          <strong id="analyticsBusiest">—</strong>
+        </article>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-title-row">
+          <div>
+            <h3>Occupancy by time</h3>
+            <p>Automatically generated bar chart</p>
+          </div>
+          <span class="data-badge">Updates with route</span>
+        </div>
+        <div class="bar-chart" id="barChart"></div>
+      </div>
+
+      <div class="findings-card">
+        <h3>Findings</h3>
+        <p id="findingOne">—</p>
+        <p id="findingTwo">—</p>
+        <h4>Decision supported by the data</h4>
+        <p id="analyticsDecision">—</p>
+      </div>
+    </section>
+  </section>
+
+  <!-- SAVED -->
+  <section class="page hidden" id="page-saved">
+    <section class="panel page-panel">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">DATA STORAGE</span>
+          <h2>Saved trips</h2>
+          <p class="subtext">
+            Trips are stored in localStorage and remain after a page reload.
+          </p>
+        </div>
+        <label class="small-select">
+          Filter route
+          <select id="savedFilter">
+            <option value="all">All routes</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="savedTripsList" class="saved-list"></div>
+    </section>
+  </section>
+
+  <!-- SECURITY -->
+  <section class="page hidden" id="page-security">
+    <section class="panel page-panel">
+      <span class="eyebrow">BASIC CYBERSECURITY</span>
+      <h2>Security risks and planned improvements</h2>
+
+      <div class="security-grid">
+        <article class="security-card">
+          <span class="risk-number">01</span>
+          <h3>Prototype password storage</h3>
+          <p>
+            This demo stores accounts in the browser. Anyone with access to the browser storage
+            could inspect those values.
+          </p>
+          <strong>Planned improvement</strong>
+          <p>
+            Move authentication to a backend and store only salted password hashes.
+          </p>
+        </article>
+
+        <article class="security-card">
+          <span class="risk-number">02</span>
+          <h3>Passenger and location privacy</h3>
+          <p>
+            A future camera or live-location system could collect sensitive information if raw
+            images or identifiable passenger data were stored.
+          </p>
+          <strong>Planned improvement</strong>
+          <p>
+            Process counts without facial identification, keep only aggregated data and limit retention.
+          </p>
+        </article>
+      </div>
+
+      <div class="security-note">
+        <strong>Important:</strong>
+        Registration on this website is for demonstration only. Do not use a real password.
+      </div>
+    </section>
+  </section>
+
+  <!-- PROFILE -->
+  <section class="page hidden" id="page-profile">
+    <section class="panel page-panel profile-panel">
+      <span class="eyebrow">ACCOUNT</span>
+      <h2>My profile</h2>
+
+      <div class="profile-avatar" id="profileInitial">U</div>
+      <div class="profile-data">
+        <div><span>Name</span><strong id="profileName">—</strong></div>
+        <div><span>Email</span><strong id="profileEmail">—</strong></div>
+        <div><span>Account type</span><strong id="profileType">—</strong></div>
+        <div><span>Saved trips</span><strong id="profileTrips">0</strong></div>
+      </div>
+    </section>
+  </section>
+
+</main>
+
+<footer>
+  <strong>SmartBus Astana</strong>
+  <span>University project · simulated occupancy data · 2026</span>
+</footer>
+
+<!-- REGISTER MODAL -->
+<div class="modal hidden" id="registerModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close="register"></div>
+  <div class="modal-card">
+    <button class="modal-close" id="closeRegisterBtn" aria-label="Close">×</button>
+    <span class="eyebrow">NEW ACCOUNT</span>
+    <h2>Create your SmartBus account</h2>
+
+    <label>
+      Full name
+      <input type="text" id="registerName" placeholder="Amangeldi Alikhan">
+    </label>
+
+    <label>
+      Email
+      <input type="email" id="registerEmail" placeholder="name@example.com">
+    </label>
+
+    <label>
+      Password
+      <input type="password" id="registerPassword" placeholder="At least 6 characters">
+    </label>
+
+    <label>
+      Confirm password
+      <input type="password" id="registerConfirm" placeholder="Repeat password">
+    </label>
+
+    <p class="form-message error" id="registerError"></p>
+    <button class="btn btn-primary full-width" id="createAccountBtn">Create account</button>
+
+    <p class="modal-switch">
+      Already registered?
+      <button id="switchToLoginBtn">Log in</button>
+    </p>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal hidden" id="loginModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close="login"></div>
+  <div class="modal-card">
+    <button class="modal-close" id="closeLoginBtn" aria-label="Close">×</button>
+    <span class="eyebrow">WELCOME BACK</span>
+    <h2>Log in to SmartBus</h2>
+
+    <label>
+      Email
+      <input type="email" id="loginEmail" placeholder="name@example.com">
+    </label>
+
+    <label>
+      Password
+      <input type="password" id="loginPassword" placeholder="Your password">
+    </label>
+
+    <p class="form-message error" id="loginError"></p>
+    <button class="btn btn-primary full-width" id="loginSubmitBtn">Log in</button>
+
+    <p class="modal-switch">
+      No account?
+      <button id="switchToRegisterBtn">Register</button>
+    </p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
