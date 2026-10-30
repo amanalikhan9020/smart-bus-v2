@@ -82,6 +82,31 @@ document.addEventListener("DOMContentLoaded", () => {
       ]
     }
   };
+  ,
+"40": {
+
+  name: "Bus 40",
+
+  capacity: 105,
+
+  sourceNote: "Stops based on CTS route information.",
+
+  stops: [
+
+    "Назарбаев университеті",
+
+    "Министрліктер үйі",
+
+    "№22 мектеп-гимназиясы",
+
+    "Жастар сарайы",
+
+    "Теміржол вокзалы"
+
+  ]
+
+}
+
 
   // ---------- Helpers ----------
 
@@ -464,6 +489,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   $("timeInput").addEventListener("input", predict);
+$("timeInput").addEventListener("input", predict);
 $("timeInput").addEventListener("change", predict);
 
   $("stopSearch").addEventListener("input", renderStopList);
@@ -479,6 +505,51 @@ $("timeInput").addEventListener("change", predict);
   let currentPrediction = null;
 
 function timeDemandFactor(hour) {
+
+  if (hour < 6) return -12;
+
+  if (hour >= 6 && hour < 7) {
+    return 5;
+  }
+
+  if (hour >= 7 && hour < 8) {
+    return 20;
+  }
+
+  if (hour >= 8 && hour < 9) {
+    return 30;
+  }
+
+  if (hour >= 9 && hour < 11) {
+    return 15;
+  }
+
+  if (hour >= 11 && hour < 14) {
+    return 10;
+  }
+
+  if (hour >= 14 && hour < 17) {
+    return 15;
+  }
+
+  if (hour >= 17 && hour < 18) {
+    return 25;
+  }
+
+  if (hour >= 18 && hour < 19) {
+    return 35;
+  }
+
+  if (hour >= 19 && hour < 20) {
+    return 28;
+  }
+
+  if (hour >= 20 && hour < 22) {
+    return 12;
+  }
+
+  return 0;
+}
 
   if (hour < 6) {
     return -14 + hour * 1.2;
