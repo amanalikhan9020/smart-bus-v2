@@ -5,6 +5,7 @@ Start the app with Python's static HTTP server, then run:
 Requires Python Playwright and system Chromium; see tests/README.md.
 """
 import json
+import base64
 import os
 import re
 import unittest
@@ -35,6 +36,11 @@ class SmartBusBrowserTests(unittest.TestCase):
 
     def setUp(self):
         self.context = self.browser.new_context()
+        # Third-party map tiles are deterministic fixtures here; the dedicated
+        # map tests separately exercise a completely unavailable tile service.
+        tile = base64.b64decode("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=")
+        self.context.route("https://tile.openstreetmap.org/**", lambda route:
+                           route.fulfill(status=200, content_type="image/png", body=tile))
         self.page = self.context.new_page()
         self.page.set_default_timeout(5000)
         self.errors = []

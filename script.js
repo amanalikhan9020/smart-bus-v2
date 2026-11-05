@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let currentPrediction = null;
   let options = [];
   let modalOpener = null;
+  let routeMap = null;
 
   function message(id, text = "", error = false) {
     $(id).textContent = text;
@@ -126,6 +127,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     $("stopSearch").value = "";
     $("stopsTitle").textContent = route.name + " stops";
     $("stopCount").textContent = route.stops.length + " stops";
+    routeMap?.setRoute($("routeSelect").value, 0);
     renderStops(); predict();
   }
   function renderStops() {
@@ -143,6 +145,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       $("stopList").append(button);
     });
     $("searchMessage").textContent = $("stopList").children.length ? "" : "Stop not found.";
+    routeMap?.selectStop(Number($("stopSelect").value));
   }
   const dayLabel = trip => trip.dayOffset ? "Next day" : "Today";
   function renderPrediction() {
@@ -192,6 +195,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   function predict() {
     message("predictionMessage");
+    syncTimeControls();
     try {
       options = compareTrips($("routeSelect").value, Number($("stopSelect").value), $("timeInput").value);
       currentPrediction = options[0];
@@ -210,6 +214,35 @@ document.addEventListener("DOMContentLoaded", async () => {
   on("predictBtn", "click", predict);
   on("timeInput", "input", predict);
   on("timeInput", "change", predict);
+  function clock(minutes) {
+    const wrapped = ((minutes % 1440) + 1440) % 1440;
+    return String(Math.floor(wrapped / 60)).padStart(2, "0") + ":" + String(wrapped % 60).padStart(2, "0");
+  }
+  function syncTimeControls() {
+    const time = $("timeInput").value;
+    if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) {
+      $("timeRangeLabel").textContent = "Choose a time";
+      return;
+    }
+    const [hours, minutes] = time.split(":").map(Number);
+    $("timeRange").value = hours * 60 + minutes;
+    $("timeRange").setAttribute("aria-valuetext", time);
+    $("timeRangeLabel").textContent = time;
+  }
+  function changeTime(time) { $("timeInput").value = time; predict(); }
+  function shiftTime(delta) {
+    const time = $("timeInput").value;
+    if (!time) throw new Error("Time is required. Choose a time first, move the slider or use Now.");
+    const [hours, minutes] = time.split(":").map(Number);
+    changeTime(clock(hours * 60 + minutes + delta));
+  }
+  on("timeEarlierBtn", "click", () => shiftTime(-15), "predictionMessage");
+  on("timeLaterBtn", "click", () => shiftTime(15), "predictionMessage");
+  on("timeNowBtn", "click", () => changeTime(new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Asia/Almaty", hour: "2-digit", minute: "2-digit", hourCycle: "h23"
+  }).format(new Date())), "predictionMessage");
+  on("timeRange", "input", () => changeTime(clock(Number($("timeRange").value))));
+  on("timeRange", "change", () => changeTime(clock(Number($("timeRange").value))));
   on("resetBtn", "click", () => { $("routeSelect").selectedIndex = 0; $("timeInput").value = "18:00"; populateStops(); });
   on("saveTripBtn", "click", () => {
     requireStorage();
@@ -336,6 +369,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!$("page-profile").classList.contains("hidden")) renderProfile();
   }));
   populateRoutes("routeSelect"); populateRoutes("analyticsRouteSelect"); populateRoutes("savedFilter", true);
+  try {
+    routeMap = window.SmartBusRouteMap?.create({
+      containerId: "routeMap",
+      onSelectStop(index) {
+        $("stopSelect").value = String(index);
+        renderStops(); predict();
+      }
+    }) || null;
+    if (!routeMap) $("mapStatus").textContent = "Map unavailable. You can still choose a stop from the list.";
+  } catch {
+    $("mapStatus").textContent = "Map unavailable. You can still choose a stop from the list.";
+  }
   populateStops(); updateAnalytics();
   await initializeStorage();
 });

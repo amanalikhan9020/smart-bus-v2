@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SmartBus Astana</title>
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -105,11 +106,38 @@
 
         <label class="time-field">
           Departure time (required)
-          <input type="time" id="timeInput" value="18:00" required aria-describedby="predictionMessage">
+          <input type="time" id="timeInput" value="18:00" step="60" required aria-describedby="timeHelp predictionMessage">
         </label>
 
         <button class="btn btn-primary form-button" id="predictBtn">Predict occupancy</button>
       </div>
+
+      <div class="time-controls" aria-label="Departure time controls">
+        <div class="time-quick-actions">
+          <button type="button" id="timeEarlierBtn" class="btn btn-light" aria-label="15 minutes earlier">−15 min</button>
+          <button type="button" id="timeNowBtn" class="btn btn-light">Now (Astana)</button>
+          <button type="button" id="timeLaterBtn" class="btn btn-light" aria-label="15 minutes later">+15 min</button>
+        </div>
+        <label class="time-slider-label" for="timeRange">Choose any time <output id="timeRangeLabel" for="timeRange">18:00</output></label>
+        <input id="timeRange" class="time-slider" type="range" min="0" max="1439" step="1" value="1080" aria-valuetext="18:00" aria-describedby="timeHelp">
+        <div class="time-range-ticks" aria-hidden="true"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>23:59</span></div>
+        <p id="timeHelp" class="subtext">Type a time or drag the slider: predictions update instantly. Clock controls wrap at midnight; they do not select a calendar date. “Now” uses Astana time.</p>
+      </div>
+
+      <section class="route-map-card" aria-labelledby="mapHeading">
+        <div class="map-toolbar">
+          <div><span class="eyebrow">EXPLORE THE ROUTE</span><h3 id="mapHeading">Route map</h3></div>
+          <div class="map-actions" aria-label="Map controls">
+            <button type="button" id="mapZoomIn" class="btn btn-light" aria-label="Zoom map in">+</button>
+            <button type="button" id="mapZoomOut" class="btn btn-light" aria-label="Zoom map out">−</button>
+            <button type="button" id="mapFitRoute" class="btn btn-light">Fit route</button>
+          </div>
+        </div>
+        <p class="map-disclaimer">Approximate demo stop locations and route lines, not official CTS routing. Select a stop to update your prediction; zoom in to see all stop numbers. No live bus positions.</p>
+        <div id="routeMap" class="route-map" role="region" aria-label="Interactive Astana route map"></div>
+        <p id="mapSelection" class="map-selection" role="status" aria-live="polite"></p>
+        <p id="mapStatus" class="map-status" role="status"></p>
+      </section>
 
       <div class="prediction-grid">
         <div class="result-card">
@@ -467,6 +495,9 @@
 
 <script src="storage.js"></script>
 <script src="model.js"></script>
+<script src="vendor/leaflet/leaflet.js"></script>
+<script src="map-data.js"></script>
+<script src="route-map.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
