@@ -887,6 +887,8 @@ footer {
   margin: 0 auto;
   padding: 20px 24px 45px;
   display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
   justify-content: space-between;
   color: var(--muted);
   font-size: 12px;

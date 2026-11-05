@@ -43,7 +43,9 @@ PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
 ## Материалы Endterm
 
 - [Чек-лист критериев, формулы, пользовательское тестирование, демонстрация и защита](docs/ENDTERM.md).
-- [Презентация, 6 слайдов — ЧЕРНОВИК](docs/endterm-draft.pdf).
+- [Презентация на английском, 6 слайдов — DRAFT](docs/endterm-en.pdf).
+- [Английская версия с примерными результатами — ILLUSTRATIVE](docs/endterm-en-example.pdf). Пересборка: `python3 docs/generate_presentation.py --illustrative`. Два результата в ней синтетические и не заменяют реальные пользовательские тесты; описанные изменения интерфейса действительно реализованы.
+- [Предыдущий русский черновик](docs/endterm-draft.pdf).
 - [Редактируемый генератор презентации](docs/generate_presentation.py). Пересборка: `python3 docs/generate_presentation.py`; нужны ReportLab и шрифт DejaVu Sans (в подготовленной облачной среде установлены).
 
 Техническая исходная точка изменений: `1c2b3a7d6eda36e86329514e643d0e78cacb0631`. Пользователь указал [сайт Assignment 4](https://amanalikhan9020.github.io/smart-bus-v2/); это ссылка на изменяемый сайт, не точный коммит сдачи. Для окончательной сверки нужны коммит/архив сдачи и требования Assignments 3–4.
