@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a class="skip-link" href="#predictor">Skip to trip planner</a>
 
 <header class="topbar">
   <a class="brand" href="#" id="brandHome">
@@ -37,6 +38,18 @@
 </header>
 
 <main>
+  <p id="appMessage" class="app-message hidden" role="alert"></p>
+  <section id="legacyRecovery" class="panel recovery-panel hidden" aria-labelledby="recoveryTitle">
+    <h2 id="recoveryTitle">Update a legacy blank password</h2>
+    <p>The old prototype allowed passwords made only of spaces. Choose a valid replacement to keep using that local account. This recovery applies only to such legacy accounts in this browser; it is not server account recovery. Existing trips are preserved.</p>
+    <div class="form-grid">
+      <label>Email<input type="email" id="legacyEmail" autocomplete="email" required></label>
+      <label>New password<input type="password" id="legacyPassword" autocomplete="new-password" required></label>
+      <label>Confirm new password<input type="password" id="legacyConfirm" autocomplete="new-password" required></label>
+      <button id="legacyRecoverBtn" class="btn btn-primary">Update local password</button>
+    </div>
+    <p id="legacyError" class="form-message" role="alert"></p>
+  </section>
 
   <!-- HOME -->
   <section class="page" id="page-home">
@@ -65,7 +78,7 @@
           <div><small>Route</small><strong id="heroRoute">—</strong></div>
           <div><small>Stop</small><strong id="heroStop">—</strong></div>
           <div><small>Time</small><strong id="heroTime">—</strong></div>
-          <div><small>Next bus</small><strong id="heroNext">—</strong></div>
+          <div><small>Service day</small><strong id="heroNext">—</strong></div>
         </div>
       </div>
     </section>
@@ -90,9 +103,9 @@
           <select id="stopSelect"></select>
         </label>
 
-        <label>
-          Time
-          <input type="time" id="timeInput" value="18:00">
+        <label class="time-field">
+          Departure time (required)
+          <input type="time" id="timeInput" value="18:00" required aria-describedby="predictionMessage">
         </label>
 
         <button class="btn btn-primary form-button" id="predictBtn">Predict occupancy</button>
@@ -131,13 +144,7 @@
               SmartBus will compare the selected stop and time with simple demand rules.
             </p>
           </div>
-
-          <div class="action-row">
-            <button class="btn btn-dark" id="saveTripBtn">Save trip</button>
-            <button class="btn btn-light" id="resetBtn">Reset</button>
-          </div>
-
-          <p class="form-message" id="predictionMessage"></p>
+          <p class="tiny">Occupancy = predicted passengers ÷ capacity. Low: below 45%; medium: 45–74%; high: 75% or more. These values are simulated.</p>
         </div>
 
         <div class="stops-card">
@@ -158,16 +165,45 @@
           <div class="stop-list" id="stopList"></div>
         </div>
       </div>
+      <section class="comparison-panel" aria-labelledby="comparisonHeading">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">PLAN YOUR DEPARTURE</span>
+            <h2 id="comparisonHeading">Compare nearby times</h2>
+            <p class="subtext">Choose a time below, then save your selected trip. These are simulated predictions, not scheduled departures.</p>
+          </div>
+        </div>
+        <p id="comparisonSummary" role="status"></p>
+        <div id="comparisonOptions" class="comparison-options" role="group" aria-label="Departure time options"></div>
+        <div class="action-row">
+          <button class="btn btn-dark" id="saveTripBtn">Save selected trip</button>
+          <button class="btn btn-light" id="resetBtn">Reset</button>
+        </div>
+        <p class="form-message" id="predictionMessage" role="status" aria-live="polite"></p>
+      </section>
     </section>
   </section>
 
   <!-- ANALYTICS -->
   <section class="page hidden" id="page-analytics">
     <section class="panel page-panel">
+      <span class="eyebrow">YOUR SAVED DATA</span>
+      <h2>Saved trip analytics</h2>
+      <p class="subtext">Calculated from this local user's saved predictions. Saving or deleting a trip updates these results.</p>
+      <p id="savedAnalyticsMessage" role="status"></p>
+      <div class="analytics-grid">
+        <article class="analytics-card"><span>Saved trips</span><strong id="savedCount">0</strong></article>
+        <article class="analytics-card"><span>Average occupancy</span><strong id="savedAverage">—</strong></article>
+        <article class="analytics-card"><span>Maximum occupancy</span><strong id="savedMaximum">—</strong></article>
+      </div>
+      <div class="chart-card">
+        <h3>Average saved occupancy by route</h3>
+        <div id="savedBarChart" class="bar-chart" role="img" aria-label="No saved trip data"></div>
+      </div>
       <div class="section-heading">
         <div>
           <span class="eyebrow">DATA ANALYSIS</span>
-          <h2>Occupancy analytics</h2>
+          <h2>Simulated route demand</h2>
           <p class="subtext">
             Calculated automatically from simulated project data for the selected route.
           </p>
@@ -258,10 +294,7 @@
       SmartBus Security
     </h2>
 
-    <p class="subtext">
-      SmartBus considers possible security and privacy risks
-      related to user accounts and passenger information.
-    </p>
+    <p class="subtext">This educational app runs entirely in your browser. Use disposable test accounts; there is no server authentication or live passenger tracking.</p>
 
 
     <div class="security-grid">
@@ -288,9 +321,8 @@
         </p>
 
         <p>
-          <strong>Solution:</strong>
-          Use secure authentication, strong passwords
-          and encrypted password storage.
+          <strong>Implemented:</strong>
+          Passwords are derived with PBKDF2-SHA-256 and an individual random salt using Web Crypto. Incorrect passwords are rejected. Legacy local accounts are migrated without changing their trip identifiers.
         </p>
 
       </article>
@@ -318,8 +350,8 @@
         </p>
 
         <p>
-          <strong>Solution:</strong>
-          Store only anonymous passenger counts and aggregated data.
+          <strong>Implemented:</strong>
+          User and stored trip text is rendered as text, not executable HTML. Saved trips are separated by local user ID. All occupancy values are simulated; no real passenger data is collected.
         </p>
 
       </article>
@@ -331,14 +363,11 @@
     <div class="security-note">
 
       <h3>
-        Planned Security Improvement
+        Limits and next steps
       </h3>
 
       <p>
-        SmartBus plans to use secure authentication
-        and anonymized passenger data.
-        Passenger counting will store only the number
-        of passengers and will not use facial recognition.
+        localStorage is not encrypted. The browser owner can modify accounts, sessions and trips; all guest sessions share the same guest trip list. These controls are a local demonstration, not a server security boundary. A future version needs server-side sessions, access checks and a secure database. We do not use facial recognition.
       </p>
 
     </div>
@@ -370,34 +399,34 @@
 </footer>
 
 <!-- REGISTER MODAL -->
-<div class="modal hidden" id="registerModal" aria-hidden="true">
+<div class="modal hidden" id="registerModal" role="dialog" aria-modal="true" aria-labelledby="registerTitle" aria-hidden="true">
   <div class="modal-backdrop" data-close="register"></div>
   <div class="modal-card">
     <button class="modal-close" id="closeRegisterBtn" aria-label="Close">×</button>
     <span class="eyebrow">NEW ACCOUNT</span>
-    <h2>Create your SmartBus account</h2>
+    <h2 id="registerTitle">Create your SmartBus account</h2>
 
     <label>
       Full name
-      <input type="text" id="registerName" placeholder="Amangeldi Alikhan">
+      <input type="text" id="registerName" autocomplete="name" placeholder="Amangeldi Alikhan" required>
     </label>
 
     <label>
       Email
-      <input type="email" id="registerEmail" placeholder="name@example.com">
+      <input type="email" id="registerEmail" autocomplete="email" placeholder="name@example.com" required>
     </label>
 
     <label>
       Password
-      <input type="password" id="registerPassword" placeholder="At least 6 characters">
+      <input type="password" id="registerPassword" autocomplete="new-password" placeholder="At least 6 characters" required>
     </label>
 
     <label>
       Confirm password
-      <input type="password" id="registerConfirm" placeholder="Repeat password">
+      <input type="password" id="registerConfirm" autocomplete="new-password" placeholder="Repeat password" required>
     </label>
 
-    <p class="form-message error" id="registerError"></p>
+    <p class="form-message error" id="registerError" role="alert"></p>
     <button class="btn btn-primary full-width" id="createAccountBtn">Create account</button>
 
     <p class="modal-switch">
@@ -408,24 +437,24 @@
 </div>
 
 <!-- LOGIN MODAL -->
-<div class="modal hidden" id="loginModal" aria-hidden="true">
+<div class="modal hidden" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle" aria-hidden="true">
   <div class="modal-backdrop" data-close="login"></div>
   <div class="modal-card">
     <button class="modal-close" id="closeLoginBtn" aria-label="Close">×</button>
     <span class="eyebrow">WELCOME BACK</span>
-    <h2>Log in to SmartBus</h2>
+    <h2 id="loginTitle">Log in to SmartBus</h2>
 
     <label>
       Email
-      <input type="email" id="loginEmail" placeholder="name@example.com">
+      <input type="email" id="loginEmail" autocomplete="email" placeholder="name@example.com" required>
     </label>
 
     <label>
       Password
-      <input type="password" id="loginPassword" placeholder="Your password">
+      <input type="password" id="loginPassword" autocomplete="current-password" placeholder="Your password" required>
     </label>
 
-    <p class="form-message error" id="loginError"></p>
+    <p class="form-message error" id="loginError" role="alert"></p>
     <button class="btn btn-primary full-width" id="loginSubmitBtn">Log in</button>
 
     <p class="modal-switch">
@@ -435,6 +464,8 @@
   </div>
 </div>
 
+<script src="storage.js"></script>
+<script src="model.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
