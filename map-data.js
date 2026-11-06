@@ -1,66 +1,112 @@
-/*
- * Demonstration geography, NOT official CTS stop coordinates or road routing.
- * The source project contains stop names only. The anchors below are manually
- * placed, approximate Astana-area examples. Intermediate stop positions are
- * linearly interpolated between anchors, rather than geocoded or measured.
- * Do not use this dataset for navigation or claim that it is a verified route.
- */
+/* Real, source-attributed stop coordinates. Missing locations are never inferred. */
 (() => {
   "use strict";
+  const hasOwn = (value, key) => Object.prototype.hasOwnProperty.call(value, key);
+  const script = document.currentScript;
+  const dataURL = new URL("data/astana-stops.json", script ? script.src : document.baseURI);
+  if (script && script.src) dataURL.search = new URL(script.src).search;
+  let dataset = null;
+  let pending = null;
+  let generation = 0;
 
-  // Entries: [stop index in the original route list, latitude, longitude].
-  const ROUTE_ANCHORS = {
-    "10": {
-      stopCount: 36,
-      points: [[0, 51.1958, 71.4097], [4, 51.1810, 71.4180], [8, 51.1640, 71.4350],
-        [12, 51.1440, 71.4370], [15, 51.1270, 71.4280], [18, 51.1180, 71.4070],
-        [21, 51.1060, 71.4000], [23, 51.0900, 71.3980], [26, 51.0770, 71.4100],
-        [29, 51.0610, 71.4320], [32, 51.0440, 71.4470], [35, 51.0260, 71.4670]]
-    },
-    "501": {
-      stopCount: 18,
-      points: [[0, 51.1880, 71.3770], [3, 51.1700, 71.3920], [5, 51.1530, 71.4150],
-        [7, 51.1320, 71.4030], [10, 51.1160, 71.3990], [12, 51.0900, 71.3980],
-        [14, 51.0680, 71.4260], [16, 51.0410, 71.4480], [17, 51.0260, 71.4670]]
-    },
-    "40": {
-      stopCount: 10,
-      points: [[0, 51.0750, 71.4240], [1, 51.0900, 71.4140], [3, 51.1080, 71.4260],
-        [4, 51.1180, 71.3960], [5, 51.0900, 71.3980], [6, 51.1260, 71.4330],
-        [7, 51.1580, 71.4560], [8, 51.1770, 71.4350], [9, 51.1958, 71.4097]]
-    },
-    "53": {
-      stopCount: 11,
-      points: [[0, 51.0750, 71.4240], [1, 51.0900, 71.4140], [3, 51.1080, 71.4260],
-        [4, 51.1180, 71.3960], [5, 51.0900, 71.3980], [6, 51.1580, 71.4110],
-        [7, 51.1680, 71.4500], [8, 51.1580, 71.4560], [9, 51.1820, 71.4280],
-        [10, 51.1958, 71.4097]]
+  function requiredText(value, label, limit = 2000) {
+    if (typeof value !== "string" || !value.trim() || value.length > limit) {
+      throw new Error("The stop dataset has invalid " + label + ".");
     }
-  };
-
-  function getCoordinates(routeId, stopCount) {
-    const source = Object.hasOwn(ROUTE_ANCHORS, routeId) ? ROUTE_ANCHORS[routeId] : null;
-    if (!source || !Number.isInteger(stopCount) || stopCount < 1) {
-      throw new Error("No demonstration map data is available for this route.");
+    return value;
+  }
+  function validate(raw) {
+    if (!raw || raw.schemaVersion !== 1 || !raw.source || !Array.isArray(raw.stops) ||
+        !raw.stops.length || raw.stops.length > 20000) {
+      throw new Error("The published stop dataset is missing or invalid.");
     }
-    return Array.from({ length: stopCount }, (_, index) => {
-      // Normalized progress keeps a changed stop count from indexing past data.
-      const position = stopCount === 1 ? 0 : index * (source.stopCount - 1) / (stopCount - 1);
-      let right = source.points.findIndex(point => point[0] >= position);
-      if (right < 0) right = source.points.length - 1;
-      const end = source.points[right];
-      const start = source.points[Math.max(0, right - 1)];
-      const ratio = end[0] === start[0] ? 0 : (position - start[0]) / (end[0] - start[0]);
-      return [
-        Number((start[1] + ratio * (end[1] - start[1])).toFixed(6)),
-        Number((start[2] + ratio * (end[2] - start[2])).toFixed(6))
-      ];
+    const source = {
+      name: requiredText(raw.source.name, "source name", 500),
+      url: requiredText(raw.source.url, "source URL"),
+      license: requiredText(raw.source.license, "source license", 500),
+      retrievedAt: requiredText(raw.source.retrievedAt, "retrieval date", 100),
+      coverage: requiredText(raw.source.coverage, "coverage description")
+    };
+    if (new URL(source.url).protocol !== "https:") throw new Error("The stop source URL must use HTTPS.");
+    const byId = Object.create(null);
+    const stops = raw.stops.map(item => {
+      const id = requiredText(item && item.id, "stop identifier", 200);
+      if (hasOwn(byId, id) || !Number.isFinite(item.lat) || !Number.isFinite(item.lon) ||
+          item.lat < 50.5 || item.lat > 51.7 || item.lon < 70.7 || item.lon > 72.5) {
+        throw new Error("The stop dataset has duplicate identifiers or coordinates outside the Astana area.");
+      }
+      const stop = Object.freeze({
+        id, name: requiredText(item.name, "stop name", 500), lat: item.lat, lon: item.lon
+      });
+      byId[id] = stop;
+      return stop;
+    });
+    const routeMatches = Object.create(null);
+    const suppliedMatches = raw.routeMatches || {};
+    if (typeof suppliedMatches !== "object" || Array.isArray(suppliedMatches)) {
+      throw new Error("The stop dataset has invalid route matches.");
+    }
+    Object.keys(suppliedMatches).forEach(routeId => {
+      const routes = window.SmartBusModel && window.SmartBusModel.ROUTES;
+      const route = routes && hasOwn(routes, routeId) ? routes[routeId] : null;
+      const matches = suppliedMatches[routeId];
+      if (!route || !matches || typeof matches !== "object" || Array.isArray(matches)) {
+        throw new Error("The stop dataset references an unknown route.");
+      }
+      const clean = Object.create(null);
+      Object.keys(matches).forEach(index => {
+        const numeric = Number(index);
+        const stopId = matches[index];
+        if (!/^\d+$/.test(index) || !Number.isInteger(numeric) || numeric >= route.stops.length ||
+            typeof stopId !== "string" || !hasOwn(byId, stopId)) {
+          throw new Error("The stop dataset has an invalid route-to-stop match.");
+        }
+        clean[index] = stopId;
+      });
+      routeMatches[routeId] = Object.freeze(clean);
+    });
+    const latitudes = stops.map(stop => stop.lat);
+    const longitudes = stops.map(stop => stop.lon);
+    return Object.freeze({
+      schemaVersion: 1, source: Object.freeze(source), stops: Object.freeze(stops),
+      routeMatches: Object.freeze(routeMatches), byId: Object.freeze(byId),
+      bounds: [[Math.min(...latitudes), Math.min(...longitudes)], [Math.max(...latitudes), Math.max(...longitudes)]]
     });
   }
 
+  async function load({ force = false } = {}) {
+    if (dataset && !force) return dataset;
+    if (pending && !force) return pending;
+    const attempt = ++generation;
+    const request = (async () => {
+      let response;
+      try { response = await fetch(dataURL.href, { cache: "no-cache", credentials: "same-origin" }); }
+      catch { throw new Error("Could not load the real stop dataset. Check the connection and retry."); }
+      if (!response.ok) throw new Error("The stop dataset could not be loaded (HTTP " + response.status + ").");
+      let raw;
+      try { raw = await response.json(); }
+      catch { throw new Error("The published stop dataset is not valid JSON."); }
+      const clean = validate(raw);
+      if (attempt === generation) dataset = clean;
+      return clean;
+    })();
+    pending = request;
+    try { return await request; }
+    finally { if (pending === request) pending = null; }
+  }
+
+  function getRouteStops(routeId) {
+    if (!dataset) return [];
+    const routes = window.SmartBusModel.ROUTES;
+    if (!hasOwn(routes, routeId)) return [];
+    const matches = hasOwn(dataset.routeMatches, routeId) ? dataset.routeMatches[routeId] : {};
+    return routes[routeId].stops.map((name, index) => hasOwn(matches, index) ? dataset.byId[matches[index]] : null);
+  }
+
   window.SmartBusMapData = Object.freeze({
-    bounds: [[51.005, 71.345], [51.215, 71.515]],
-    description: "Approximate demo stop locations and straight route lines; not official CTS geography.",
-    getCoordinates
+    bounds: [[51.0, 71.25], [51.23, 71.55]],
+    description: "Historic source coordinates; unmatched route stops have no inferred location.",
+    load, getData: () => dataset, getRouteStops,
+    getCoordinates: routeId => getRouteStops(routeId).map(stop => stop ? [stop.lat, stop.lon] : null)
   });
 })();

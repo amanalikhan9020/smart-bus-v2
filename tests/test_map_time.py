@@ -4,7 +4,9 @@ Run after starting the static app server:
     python3 -m unittest discover -s tests -v
 """
 import base64
+import json
 import os
+from pathlib import Path
 import re
 import unittest
 
@@ -22,6 +24,9 @@ TILE = base64.b64decode(
 class MapAndTimeTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.stop_data = json.loads(
+            (Path(__file__).resolve().parents[1] / "data/astana-stops.json").read_text()
+        )
         cls.playwright = sync_playwright().start()
         cls.browser = cls.playwright.chromium.launch(
             executable_path=os.environ.get("SMARTBUS_CHROMIUM", "/usr/bin/chromium"),
@@ -59,6 +64,13 @@ class MapAndTimeTests(unittest.TestCase):
         self.assertEqual(response.status, 200)
         expect(self.page.locator("#routeSelect option")).to_have_count(4)
         expect(self.page.locator("#routeMap.leaflet-container")).to_have_count(1)
+        expect(self.page.locator("#routeMap")).to_have_attribute("data-map-state", "ready")
+
+    def mapped_indexes(self, route="10"):
+        return sorted(self.stop_data["routeMatches"].get(route, {}), key=int)
+
+    def marker(self, index):
+        return self.page.locator(f'#routeMap .route-stop-marker[data-stop-index="{index}"]')
 
     def guest(self):
         self.page.click("#continueGuestBtn")
@@ -72,16 +84,32 @@ class MapAndTimeTests(unittest.TestCase):
         for route, count in [("10", 36), ("40", 10), ("53", 11), ("501", 18)]:
             with self.subTest(route=route):
                 self.page.select_option("#routeSelect", route)
-                expect(self.page.locator("#routeMap .route-stop-marker")).to_have_count(count)
-                self.page.locator(f'#routeMap .route-stop-marker[data-stop-index="{count - 1}"]').click()
-                expect(self.page.locator("#stopSelect")).to_have_value(str(count - 1))
+                indexes = self.mapped_indexes(route)
+                expect(self.page.locator("#stopSelect option")).to_have_count(count)
+                expect(self.page.locator("#routeMap .route-stop-marker")).to_have_count(len(indexes))
+                self.assertEqual(
+                    sorted(self.page.locator("#routeMap .route-stop-marker").evaluate_all(
+                        "markers => markers.map(marker => marker.dataset.stopIndex)"), key=int),
+                    indexes,
+                )
+                self.marker(indexes[-1]).click()
+                expect(self.page.locator("#stopSelect")).to_have_value(indexes[-1])
                 selected_stop = self.page.locator("#stopSelect option:checked").inner_text()
                 expect(self.page.locator("#mapSelection")).to_contain_text(selected_stop)
                 expect(self.page.locator("#heroStop")).to_have_text(selected_stop)
                 expect(self.page.locator("#timeInput")).to_have_value("19:00")
-                self.page.select_option("#stopSelect", "0")
-                expect(self.page.locator('#routeMap .route-stop-marker[data-stop-index="0"]')).to_have_attribute("aria-pressed", "true")
-        expect(self.page.locator("#mapStatus")).to_contain_text(re.compile("approximate|demo", re.I))
+                self.page.select_option("#stopSelect", indexes[0])
+                expect(self.marker(indexes[0])).to_have_attribute("aria-pressed", "true")
+                missing = [str(index) for index in range(count) if str(index) not in indexes]
+                self.assertTrue(missing, "The historical source has partial route coverage")
+                self.page.select_option("#stopSelect", missing[0])
+                expect(self.marker(missing[0])).to_have_count(0)
+                expect(self.page.locator("#mapSelection")).to_contain_text(
+                    re.compile("no verified location", re.I))
+                expect(self.page.locator("#heroStop")).to_have_text(
+                    self.page.locator("#stopSelect option:checked").inner_text())
+                expect(self.page.locator("#occupancyMetric")).to_have_text(re.compile(r"^\d+%$"))
+        expect(self.page.locator("#mapStatus")).to_contain_text(re.compile("source|GTFS", re.I))
         expect(self.page.locator(".leaflet-control-attribution")).to_contain_text("OpenStreetMap")
 
     def test_map_remains_usable_when_remote_tiles_are_unavailable(self):
@@ -90,25 +118,27 @@ class MapAndTimeTests(unittest.TestCase):
         self.load()
         expect(self.page.locator("#mapStatus")).to_contain_text(
             re.compile("unavailable|offline|schematic|could not|cannot", re.I))
-        expect(self.page.locator("#routeMap .route-stop-marker")).to_have_count(36)
-        self.page.locator('#routeMap .route-stop-marker[data-stop-index="35"]').click()
-        expect(self.page.locator("#stopSelect")).to_have_value("35")
+        indexes = self.mapped_indexes()
+        expect(self.page.locator("#routeMap .route-stop-marker")).to_have_count(len(indexes))
+        self.marker(indexes[-1]).click()
+        expect(self.page.locator("#stopSelect")).to_have_value(indexes[-1])
         self.page.click("#mapFitRoute")
-        expect(self.page.locator("#routeMap .route-stop-marker")).to_have_count(36)
+        expect(self.page.locator("#routeMap .route-stop-marker")).to_have_count(len(indexes))
         expect(self.page.locator("#occupancyMetric")).not_to_have_text("—")
 
     def test_keyboard_markers_select_stops_with_enter_and_space(self):
-        self.page.select_option("#routeSelect", "40")
-        marker = self.page.locator('#routeMap .route-stop-marker[data-stop-index="9"]')
+        self.page.select_option("#routeSelect", "10")
+        indexes = self.mapped_indexes()
+        marker = self.marker(indexes[-1])
         marker.focus()
         self.page.keyboard.press("Enter")
-        expect(self.page.locator("#stopSelect")).to_have_value("9")
-        first = self.page.locator('#routeMap .route-stop-marker[data-stop-index="0"]')
+        expect(self.page.locator("#stopSelect")).to_have_value(indexes[-1])
+        first = self.marker(indexes[0])
         first.focus()
         self.page.keyboard.press("Space")
-        expect(self.page.locator("#stopSelect")).to_have_value("0")
+        expect(self.page.locator("#stopSelect")).to_have_value(indexes[0])
 
-    def test_native_time_and_slider_update_prediction_without_submit(self):
+    def test_typed_time_and_slider_update_prediction_without_submit(self):
         self.page.fill("#timeInput", "19:00")
         expect(self.page.locator("#occupancyMetric")).to_have_text("49%")
         expect(self.page.locator("#timeRange")).to_have_value("1140")
@@ -155,14 +185,17 @@ class MapAndTimeTests(unittest.TestCase):
 
     def test_map_stop_and_custom_time_persist_in_selected_trip(self):
         self.guest()
-        self.page.select_option("#routeSelect", "40")
-        self.page.locator('#routeMap .route-stop-marker[data-stop-index="9"]').click()
+        self.page.select_option("#routeSelect", "10")
+        self.marker(self.mapped_indexes()[-1]).click()
         stop = self.page.locator("#stopSelect option:checked").inner_text()
         self.page.fill("#timeInput", "19:00")
-        self.page.locator('.comparison-option[data-offset="30"]').click()
+        alternative = self.page.locator('.comparison-option[data-offset="30"]')
+        alternative.click()
+        expect(alternative).to_have_attribute("aria-pressed", "true")
+        expect(self.page.locator("#heroTime")).to_have_text("19:30")
         self.page.click("#saveTripBtn")
         trip = self.stored_trips()[0]
-        self.assertEqual(trip["routeId"], "40")
+        self.assertEqual(trip["routeId"], "10")
         self.assertEqual(trip["stop"], stop)
         self.assertEqual(trip["time"], "19:30")
         self.page.reload(wait_until="networkidle")
@@ -174,11 +207,11 @@ class MapAndTimeTests(unittest.TestCase):
         for width in [390, 320]:
             with self.subTest(width=width):
                 self.page.set_viewport_size({"width": width, "height": 844})
-                self.page.select_option("#routeSelect", "40")
+                self.page.select_option("#routeSelect", "10")
                 self.page.fill("#timeInput", "17:45")
                 self.page.click("#mapFitRoute")
-                self.page.locator('#routeMap .route-stop-marker[data-stop-index="9"]').click()
-                expect(self.page.locator("#stopSelect")).to_have_value("9")
+                self.marker(self.mapped_indexes()[-1]).click()
+                expect(self.page.locator("#stopSelect")).to_have_value(self.mapped_indexes()[-1])
                 self.page.click("#timeLaterBtn")
                 expect(self.page.locator("#timeInput")).to_have_value("18:00")
                 self.assertTrue(self.page.evaluate("document.documentElement.scrollWidth <= innerWidth + 1"))

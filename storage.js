@@ -240,7 +240,7 @@
     const users = accounts();
     if (users.some(user => user.email.trim().toLowerCase() === email)) throw new Error("This email is already registered.");
     const user = {
-      id: "user_" + secureCrypto().randomUUID(), name, email,
+      id: "user_" + window.SmartBusUtils.createId(), name, email,
       type: "Registered user", ...protectedPassword
     };
     write(USERS, [...users, user]);
@@ -306,7 +306,7 @@
     // The app loads its route model before using storage. Keep this optional so
     // the storage module can also be exercised independently of the interface.
     const routes = window.SmartBusModel?.ROUTES;
-    if (routes && (!Object.hasOwn(routes, trip.routeId) ||
+    if (routes && (!Object.prototype.hasOwnProperty.call(routes, trip.routeId) ||
         routes[trip.routeId].name !== trip.routeName ||
         routes[trip.routeId].capacity !== trip.capacity ||
         !routes[trip.routeId].stops.includes(trip.stop))) {
@@ -344,7 +344,7 @@
         item.time === clean.time && item.dayOffset === clean.dayOffset)) {
       throw new Error("This trip is already saved. Open Saved Trips to view it.");
     }
-    if (trips.some(item => item.id === clean.id)) clean.id = secureCrypto().randomUUID();
+    if (trips.some(item => item.id === clean.id)) clean.id = window.SmartBusUtils.createId();
     write(tripKey(user), [clean, ...trips]);
     return trips.length + 1;
   }

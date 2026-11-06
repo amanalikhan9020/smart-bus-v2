@@ -17,7 +17,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   function report(error) { message("appMessage", error.message || "An unexpected error occurred. Please reload.", true); }
   function on(id, event, fn, errorId = "appMessage") {
-    $(id).addEventListener(event, async e => {
+    const control = $(id);
+    if (!control) return;
+    control.addEventListener(event, async e => {
       try { await fn(e); }
       catch (error) { message(errorId, error.message, true); }
     });
@@ -58,7 +60,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (e.key === "Escape") { closeModal(modal.id); return; }
     if (e.key !== "Tab") return;
     const controls = [...modal.querySelectorAll("button:not(:disabled), input:not(:disabled)")];
-    const first = controls[0], last = controls.at(-1);
+    const first = controls[0], last = controls[controls.length - 1];
     if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
     if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
@@ -106,6 +108,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.querySelectorAll(".nav-btn").forEach(btn => btn.addEventListener("click", () => showPage(btn.dataset.page)));
   on("brandHome", "click", e => { e.preventDefault(); showPage("home"); });
   on("heroPredictBtn", "click", () => { showPage("home"); $("predictor").scrollIntoView({ behavior: "smooth" }); });
+  on("openMapBtn", "click", () => { showPage("home"); $("mapHeading").scrollIntoView({ behavior: "smooth", block: "start" }); });
   on("profileBtn", "click", () => showPage("profile"));
   function refreshUser() {
     const user = store.getCurrentUser();
@@ -213,7 +216,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   on("clearSearchBtn", "click", () => { $("stopSearch").value = ""; renderStops(); });
   on("predictBtn", "click", predict);
   on("timeInput", "input", predict);
-  on("timeInput", "change", predict);
+  // Text edits already update on input. Rebuilding cards on the later blur
+  // change event would remove the card under the user's pending click.
   function clock(minutes) {
     const wrapped = ((minutes % 1440) + 1440) % 1440;
     return String(Math.floor(wrapped / 60)).padStart(2, "0") + ":" + String(wrapped % 60).padStart(2, "0");
@@ -228,6 +232,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     $("timeRange").value = hours * 60 + minutes;
     $("timeRange").setAttribute("aria-valuetext", time);
     $("timeRangeLabel").textContent = time;
+    if ($("timeHour")) $("timeHour").value = String(hours).padStart(2, "0");
+    if ($("timeMinute")) $("timeMinute").value = String(minutes).padStart(2, "0");
   }
   function changeTime(time) { $("timeInput").value = time; predict(); }
   function shiftTime(delta) {
@@ -243,6 +249,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   }).format(new Date())), "predictionMessage");
   on("timeRange", "input", () => changeTime(clock(Number($("timeRange").value))));
   on("timeRange", "change", () => changeTime(clock(Number($("timeRange").value))));
+  const chooseClockTime = () => changeTime($("timeHour").value + ":" + $("timeMinute").value);
+  on("timeHour", "change", chooseClockTime, "predictionMessage");
+  on("timeMinute", "change", chooseClockTime, "predictionMessage");
   on("resetBtn", "click", () => { $("routeSelect").selectedIndex = 0; $("timeInput").value = "18:00"; populateStops(); });
   on("saveTripBtn", "click", () => {
     requireStorage();
@@ -369,6 +378,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!$("page-profile").classList.contains("hidden")) renderProfile();
   }));
   populateRoutes("routeSelect"); populateRoutes("analyticsRouteSelect"); populateRoutes("savedFilter", true);
+  for (const [id, count] of [["timeHour", 24], ["timeMinute", 60]]) {
+    if ($(id)) for (let value = 0; value < count; value++) {
+      const text = String(value).padStart(2, "0");
+      $(id).append(new Option(text, text));
+    }
+  }
   try {
     routeMap = window.SmartBusRouteMap?.create({
       containerId: "routeMap",

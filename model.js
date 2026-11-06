@@ -102,7 +102,7 @@
 
 
   function makePrediction(routeId, stopIndex, time, dayOffset = 0) {
-    if (!Object.hasOwn(ROUTES, routeId)) throw new Error("Choose a valid route.");
+    if (!Object.prototype.hasOwnProperty.call(ROUTES, routeId)) throw new Error("Choose a valid route.");
     const route = ROUTES[routeId];
     if (!Number.isInteger(stopIndex) || !route.stops[stopIndex]) throw new Error("Choose a valid stop.");
     if (!time || !time.trim()) throw new Error("Time is required. Choose a departure time.");
@@ -110,7 +110,7 @@
     if (dayOffset !== 0 && dayOffset !== 1) throw new Error("Choose today or next day.");
     const occupancy = calculateOccupancy(routeId, stopIndex, time);
     return {
-      id: crypto.randomUUID(), routeId, routeName: route.name, stop: route.stops[stopIndex],
+      id: window.SmartBusUtils.createId(), routeId, routeName: route.name, stop: route.stops[stopIndex],
       time, dayOffset, occupancy, passengers: Math.round(route.capacity * occupancy / 100),
       capacity: route.capacity
     };

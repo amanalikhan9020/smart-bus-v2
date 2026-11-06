@@ -4,9 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="smartbus-version" content="20261106.2">
   <title>SmartBus Astana</title>
-  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css?v=20261106.2">
+  <link rel="stylesheet" href="style.css?v=20261106.2">
 </head>
 <body>
 <a class="skip-link" href="#predictor">Skip to trip planner</a>
@@ -65,6 +66,7 @@
         <div class="hero-actions">
           <button class="btn btn-primary btn-large" id="heroPredictBtn">Make a prediction</button>
           <button class="btn btn-light btn-large" id="continueGuestBtn">Continue as guest</button>
+          <button class="btn btn-light btn-large" id="openMapBtn">Open stop map</button>
         </div>
         <p class="tiny">
           Educational prototype. Occupancy values are simulated, not live CTS data.
@@ -106,13 +108,19 @@
 
         <label class="time-field">
           Departure time (required)
-          <input type="time" id="timeInput" value="18:00" step="60" required aria-describedby="timeHelp predictionMessage">
+          <input type="text" id="timeInput" value="18:00" inputmode="text" placeholder="HH:MM, e.g. 19:30" maxlength="5" pattern="([01][0-9]|2[0-3]):[0-5][0-9]" required aria-describedby="timeHelp predictionMessage">
         </label>
 
         <button class="btn btn-primary form-button" id="predictBtn">Predict occupancy</button>
       </div>
 
       <div class="time-controls" aria-label="Departure time controls">
+        <fieldset class="clock-picker">
+          <legend>Set departure time</legend>
+          <label>Hour<select id="timeHour" aria-label="Departure hour"></select></label>
+          <span class="clock-separator" aria-hidden="true">:</span>
+          <label>Minute<select id="timeMinute" aria-label="Departure minute"></select></label>
+        </fieldset>
         <div class="time-quick-actions">
           <button type="button" id="timeEarlierBtn" class="btn btn-light" aria-label="15 minutes earlier">−15 min</button>
           <button type="button" id="timeNowBtn" class="btn btn-light">Now (Astana)</button>
@@ -121,7 +129,7 @@
         <label class="time-slider-label" for="timeRange">Choose any time <output id="timeRangeLabel" for="timeRange">18:00</output></label>
         <input id="timeRange" class="time-slider" type="range" min="0" max="1439" step="1" value="1080" aria-valuetext="18:00" aria-describedby="timeHelp">
         <div class="time-range-ticks" aria-hidden="true"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>23:59</span></div>
-        <p id="timeHelp" class="subtext">Type a time or drag the slider: predictions update instantly. Clock controls wrap at midnight; they do not select a calendar date. “Now” uses Astana time.</p>
+        <p id="timeHelp" class="subtext">Choose hours and minutes above, type HH:MM, or drag the slider: predictions update instantly. Clock controls wrap at midnight; they do not select a calendar date. “Now” uses Astana time.</p>
       </div>
 
       <section class="route-map-card" aria-labelledby="mapHeading">
@@ -133,10 +141,12 @@
             <button type="button" id="mapFitRoute" class="btn btn-light">Fit route</button>
           </div>
         </div>
-        <p class="map-disclaimer">Approximate demo stop locations and route lines, not official CTS routing. Select a stop to update your prediction; zoom in to see all stop numbers. No live bus positions.</p>
+        <p class="map-disclaimer">Stop coordinates come from a published historical Astana GTFS dataset. Available source stops are shown on the map; route stop matches are highlighted. Route coverage is partial, and this is not live bus tracking.</p>
         <div id="routeMap" class="route-map" role="region" aria-label="Interactive Astana route map"></div>
         <p id="mapSelection" class="map-selection" role="status" aria-live="polite"></p>
         <p id="mapStatus" class="map-status" role="status"></p>
+        <a id="mapDataSource" class="map-source-link" href="https://doi.org/10.3390/data10080119" target="_blank" rel="noopener noreferrer">View stop data source</a>
+        <button type="button" id="mapRetryBtn" class="btn btn-light">Reload map data</button>
       </section>
 
       <div class="prediction-grid">
@@ -493,11 +503,12 @@
   </div>
 </div>
 
-<script src="storage.js"></script>
-<script src="model.js"></script>
-<script src="vendor/leaflet/leaflet.js"></script>
-<script src="map-data.js"></script>
-<script src="route-map.js"></script>
-<script src="script.js"></script>
+<script src="compat.js?v=20261106.2"></script>
+<script src="storage.js?v=20261106.2"></script>
+<script src="model.js?v=20261106.2"></script>
+<script src="vendor/leaflet/leaflet.js?v=20261106.2"></script>
+<script src="map-data.js?v=20261106.2"></script>
+<script src="route-map.js?v=20261106.2"></script>
+<script src="script.js?v=20261106.2"></script>
 </body>
 </html>

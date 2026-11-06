@@ -1,0 +1,1958 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "name": "Astana historical GTFS — Mansurova et al. (2025)",
+    "url": "https://raw.githubusercontent.com/kabuli-web/bus-eta-uncertainty/master/data/gtfs_data/stops.txt",
+    "repository": "https://github.com/kabuli-web/bus-eta-uncertainty",
+    "mirrorUrl": "https://raw.githubusercontent.com/Riyas-m-n/BusInsight/main/Original%20Data/stops.txt",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://github.com/Riyas-m-n/BusInsight#9-dataset--attribution",
+    "licenseEvidenceQuote": "License: Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "authors": [
+      "A. Mansurova",
+      "A. Mussina",
+      "S. Aubakirov",
+      "A. Nugumanova",
+      "D. Yedilkhan"
+    ],
+    "doi": "10.3390/data10080119",
+    "paperUrl": "https://doi.org/10.3390/data10080119",
+    "datasetUrl": "https://zenodo.org/records/15769359",
+    "datasetDoi": "10.5281/zenodo.15769359",
+    "originalDataProvider": "INNOFORCE SOLUTIONS LLP",
+    "coverage": "Historic GTFS; telemetry 2024-07-29–2024-09-21; routes 10, 12, 46. Not live transit or occupancy data.",
+    "retrievedAt": "2026-11-06",
+    "routeSequenceUrl": "https://raw.githubusercontent.com/kabuli-web/bus-eta-uncertainty/master/data/gtfs_data/stop_times.txt",
+    "tripDirectionsUrl": "https://raw.githubusercontent.com/kabuli-web/bus-eta-uncertainty/master/data/gtfs_data/trips.txt",
+    "licenseVerificationNote": "CC BY 4.0 is reported by the BusInsight dataset attribution. Primary Zenodo and DOI hosts cannot be accessed under the current environment network policy; mirror stop files are byte-identical."
+  },
+  "stops": [
+    {
+      "id": "69d3a2a0-c1c5-4c40-9930-6f7f2fa2ae2a",
+      "name": "Kafe Sulukol'",
+      "lat": 51.18512276135868,
+      "lon": 71.3528443759532
+    },
+    {
+      "id": "18e751ea-9e23-49dd-9275-4559c1ed40b0",
+      "name": "Shugyla",
+      "lat": 51.186013677553625,
+      "lon": 71.35458807996658
+    },
+    {
+      "id": "77be7d79-bc6c-4c3d-a629-42529171f5da",
+      "name": "Kladbishche",
+      "lat": 51.1848232789926,
+      "lon": 71.35934473401416
+    },
+    {
+      "id": "439de39e-eed6-49be-9fc7-e232cc3c3f84",
+      "name": "Medeu",
+      "lat": 51.1834920085524,
+      "lon": 71.3647279589701
+    },
+    {
+      "id": "cb356626-5f8b-4acd-82b4-d01a06d43b3f",
+      "name": "K'artaly",
+      "lat": 51.18221342546384,
+      "lon": 71.37000604315571
+    },
+    {
+      "id": "49f207a4-a4d2-44ee-983a-8f330bf0375c",
+      "name": "Akan Sery",
+      "lat": 51.1811852643432,
+      "lon": 71.37524602642249
+    },
+    {
+      "id": "3a8b16e7-e35d-4891-99dc-179197ec2b6e",
+      "name": "prospekt Tlendieva",
+      "lat": 51.1792857933539,
+      "lon": 71.38321235359834
+    },
+    {
+      "id": "6c7bf549-6c5b-4078-bfbf-22027216c209",
+      "name": "Sarybulak",
+      "lat": 51.17680182248764,
+      "lon": 71.39435418502224
+    },
+    {
+      "id": "20608557-4a9c-433d-89cb-c0dd527618d3",
+      "name": "Sredniaia shkola No. 18",
+      "lat": 51.17548306787644,
+      "lon": 71.39804998850084
+    },
+    {
+      "id": "6315f075-d165-40b9-b97c-aa60a49512d0",
+      "name": "ZhK Svechki",
+      "lat": 51.17539633324927,
+      "lon": 71.40838738181083
+    },
+    {
+      "id": "d124d339-88ed-42e4-8593-838cbad37811",
+      "name": "Teatr Astana Opera",
+      "lat": 51.13572746333679,
+      "lon": 71.40775769677329
+    },
+    {
+      "id": "a10b4fa3-0b47-4297-b29b-4d16b670ca00",
+      "name": "TRTs Khan Shatyr",
+      "lat": 51.13359623269936,
+      "lon": 71.40685196337553
+    },
+    {
+      "id": "33611474-3457-4f2a-919d-82064f2d8e54",
+      "name": "Respublikanskii diagnosticheskii tsentr",
+      "lat": 51.1266414855444,
+      "lon": 71.40603802713036
+    },
+    {
+      "id": "870084cf-ed0b-4bbd-bea0-368b5bce2425",
+      "name": "Kardiokhirurgicheskaia klinika",
+      "lat": 51.12697142240576,
+      "lon": 71.41346238166176
+    },
+    {
+      "id": "2dc158f2-0a35-4643-9ac2-4cc3fa09036a",
+      "name": "Mechet' Abu Nasyr al-Farabi",
+      "lat": 51.12747896082728,
+      "lon": 71.41923971432102
+    },
+    {
+      "id": "a7c336fd-6ada-4818-a1c2-ae38f89d9d64",
+      "name": "TRTs Keruen",
+      "lat": 51.12647514318365,
+      "lon": 71.42513542689518
+    },
+    {
+      "id": "8eb3db61-5a0c-420d-80cf-f2b44eb9676a",
+      "name": "ZhK Orynbor Towers",
+      "lat": 51.09064819347975,
+      "lon": 71.4298936575537
+    },
+    {
+      "id": "5d11962d-6412-4c7c-984d-f4ee5eb63859",
+      "name": "Karakat",
+      "lat": 51.08954066114963,
+      "lon": 71.4375556699916
+    },
+    {
+      "id": "3db7fef2-0573-4884-af46-8d0986364f93",
+      "name": "Zharkyn",
+      "lat": 51.088733725184106,
+      "lon": 71.44419210601382
+    },
+    {
+      "id": "bffe93af-d0f5-4216-84e9-55893d7beefd",
+      "name": "ZhK Komfort taun",
+      "lat": 51.08860909112646,
+      "lon": 71.44868975486412
+    },
+    {
+      "id": "339fa8e4-18ae-4cfa-b6e9-111e97207174",
+      "name": "ZhK Komfort taun",
+      "lat": 51.08860909112646,
+      "lon": 71.44868975486412
+    },
+    {
+      "id": "13d3a76f-5cc8-4d6f-8b5a-335beea7eb5c",
+      "name": "ZhK Nova city",
+      "lat": 51.091371108291966,
+      "lon": 71.44904483921448
+    },
+    {
+      "id": "188e1c69-e5de-4a89-abf0-b1bd3e0880cc",
+      "name": "Zharkyn",
+      "lat": 51.08850116536807,
+      "lon": 71.44498162665293
+    },
+    {
+      "id": "ee853e2c-e631-45a9-8f2d-be48c4c9da88",
+      "name": "Karakat",
+      "lat": 51.089233245941,
+      "lon": 71.43961173818919
+    },
+    {
+      "id": "d341a88a-9c13-4e35-9a89-10090402b94c",
+      "name": "ZhK Orynbor Towers",
+      "lat": 51.09019476242609,
+      "lon": 71.4328729145832
+    },
+    {
+      "id": "0241ba8f-1c7d-43c8-a2e1-39086ac6f078",
+      "name": "Ministerstvo oborony",
+      "lat": 51.12595381886344,
+      "lon": 71.43062644976045
+    },
+    {
+      "id": "17cc4828-7b49-4d27-bad3-8dce5b9803d4",
+      "name": "TRTs Keruen",
+      "lat": 51.1271237132846,
+      "lon": 71.42309511260679
+    },
+    {
+      "id": "f10f105d-68d2-4a07-a64c-3570d19da0ff",
+      "name": "NK Kazmunaigaz",
+      "lat": 51.13435060403942,
+      "lon": 71.41487597180254
+    },
+    {
+      "id": "3943eb59-f7df-4bc8-a03b-57ec0f53839b",
+      "name": "Sredniaia shkola No. 18",
+      "lat": 51.17585228262476,
+      "lon": 71.39873748216235
+    },
+    {
+      "id": "b545b42e-bf63-4971-88da-0034cf57c6d3",
+      "name": "Sarybulak",
+      "lat": 51.17696399665304,
+      "lon": 71.39276713176517
+    },
+    {
+      "id": "8be4569f-b109-4c67-aa6b-10e7e1ff0a1a",
+      "name": "prospekt Tlendieva",
+      "lat": 51.180032406360205,
+      "lon": 71.38172306878802
+    },
+    {
+      "id": "1547f9fc-9cdb-4452-80b1-1de805d07791",
+      "name": "Akan Sery",
+      "lat": 51.181973977787,
+      "lon": 71.37328390498533
+    },
+    {
+      "id": "2045b211-161c-475d-8e29-b5dcba8d5c88",
+      "name": "K'artaly",
+      "lat": 51.18328805464409,
+      "lon": 71.36832656597443
+    },
+    {
+      "id": "e26b277d-07e2-4a9a-8ac5-a8268eef6ddd",
+      "name": "Medeu",
+      "lat": 51.18470444749203,
+      "lon": 71.36281917819714
+    },
+    {
+      "id": "18e674ae-467c-4bf9-b5e9-6747a27c958b",
+      "name": "Kladbishche",
+      "lat": 51.185614435003686,
+      "lon": 71.35814821522924
+    },
+    {
+      "id": "374a1eba-3bff-4242-854e-4043b5a0dd8c",
+      "name": "Shugyla",
+      "lat": 51.18315929424949,
+      "lon": 71.35122112599142
+    },
+    {
+      "id": "ddfa4130-2d84-47ca-9601-6141a4e1a792",
+      "name": "Titova",
+      "lat": 51.183248582162506,
+      "lon": 71.34847676618949
+    },
+    {
+      "id": "97f5041a-4317-40ea-ae45-e45b2bc1d54e",
+      "name": "Ardagerler",
+      "lat": 51.18474312769264,
+      "lon": 71.34276675301597
+    },
+    {
+      "id": "980c8049-de1b-4b86-8f4a-c32728cb33d8",
+      "name": "Babataiuly",
+      "lat": 51.18562388563353,
+      "lon": 71.34072758121034
+    },
+    {
+      "id": "35cfa9fd-fcd4-49d3-98c5-2ee1aab26358",
+      "name": "per. Taitobe",
+      "lat": 51.18708691151863,
+      "lon": 71.33564891835546
+    },
+    {
+      "id": "98026c8f-db24-493d-84e2-b5570fdf37d5",
+      "name": "Zhanakonys",
+      "lat": 51.1884213368695,
+      "lon": 71.33176118744055
+    },
+    {
+      "id": "14c30498-4bf5-4b7c-84fb-3a8838e8f2e2",
+      "name": "Kafe Kazygurt",
+      "lat": 51.191766027692616,
+      "lon": 71.33329068771074
+    },
+    {
+      "id": "b92ef832-a347-4211-9b54-0edf29047e57",
+      "name": "Gostinitsa Bakhyt",
+      "lat": 51.19395165254147,
+      "lon": 71.32608362297202
+    },
+    {
+      "id": "887d0f28-1fde-47b7-88f4-2ceff1144fbf",
+      "name": "zh/m Koktal-2",
+      "lat": 51.196567631964726,
+      "lon": 71.32780341455846
+    },
+    {
+      "id": "6a6d9880-7a1a-4598-acba-a3408eef739e",
+      "name": "Tarbagatai",
+      "lat": 51.200851465106936,
+      "lon": 71.3324804277106
+    },
+    {
+      "id": "66c67c6a-c5f7-4176-9d11-f2c8510ec6aa",
+      "name": "Mu'sa dukeni",
+      "lat": 51.20025948812925,
+      "lon": 71.33688297418169
+    },
+    {
+      "id": "220c90dc-c8e4-422b-98b5-d856f2eec1d1",
+      "name": "Nauryz48",
+      "lat": 51.20168568523773,
+      "lon": 71.33698941157755
+    },
+    {
+      "id": "f4d06a9d-8db0-4730-b026-249312e0dbe5",
+      "name": "ulitsa Karasu",
+      "lat": 51.200426687006505,
+      "lon": 71.33076771758407
+    },
+    {
+      "id": "24da8f75-2dc4-4a5d-becc-2898122eaae5",
+      "name": "Zh/d vokzal Astana 1",
+      "lat": 51.195,
+      "lon": 71.408
+    },
+    {
+      "id": "fe76afde-d448-4bbd-8aa5-7b753031d460",
+      "name": "Teatr Zhastar",
+      "lat": 51.190469,
+      "lon": 71.406632
+    },
+    {
+      "id": "32457954-89fb-4c6d-8184-f67abcac80a8",
+      "name": "ul.Ybyrai Altynsarina",
+      "lat": 51.187289,
+      "lon": 71.407598
+    },
+    {
+      "id": "905e2f9c-80ce-4887-a0b1-44ad9636f3a6",
+      "name": "Ulitsa A. Moldagulovoi",
+      "lat": 51.1846227,
+      "lon": 71.4083684
+    },
+    {
+      "id": "731aaea7-faff-4e78-b247-ae0f180e0052",
+      "name": "Shkola-litsei No. 15",
+      "lat": 51.178385,
+      "lon": 71.410055
+    },
+    {
+      "id": "50768bd6-38ce-4f3d-943d-a11b456905d2",
+      "name": "Prospekt Saryarka",
+      "lat": 51.174294,
+      "lon": 71.406421
+    },
+    {
+      "id": "d46249b9-2884-4b23-be59-9e5f54f49c89",
+      "name": "Sportivnyi kompleks ABYROY",
+      "lat": 51.1686558,
+      "lon": 71.407836
+    },
+    {
+      "id": "b2feffc5-c000-486c-9e55-99734f884cb0",
+      "name": "Shkola Zerde",
+      "lat": 51.1651186,
+      "lon": 71.4089916
+    },
+    {
+      "id": "fe69c59f-7223-46c9-baf4-bc76f8e829ab",
+      "name": "Ulitsa Kenesary",
+      "lat": 51.161876,
+      "lon": 71.409894
+    },
+    {
+      "id": "35914827-e837-47c4-93ce-d92d1d09d291",
+      "name": "Park Astana",
+      "lat": 51.152474,
+      "lon": 71.4123438
+    },
+    {
+      "id": "21a7b5b4-3e01-4457-91da-b8cc6ac14bbd",
+      "name": "TRTs KeruenCity",
+      "lat": 51.143451,
+      "lon": 71.410961
+    },
+    {
+      "id": "01a3134a-4649-496d-b4fa-aea764a50a8b",
+      "name": "TRTs Saryarka",
+      "lat": 51.139146,
+      "lon": 71.409255
+    },
+    {
+      "id": "8f799508-4fac-4e5a-8fda-b24e19000780",
+      "name": "AO Kazmunaigaz",
+      "lat": 51.134901,
+      "lon": 71.41477
+    },
+    {
+      "id": "160e90a6-0ebf-42f5-801d-bc26323a7705",
+      "name": "Ulitsa  Dinmukhameda Kunaeva",
+      "lat": 51.132429151498,
+      "lon": 71.419176988836
+    },
+    {
+      "id": "6de59510-6e48-4efa-8459-b2c0d2766247",
+      "name": "Kazakhstan temir zholy",
+      "lat": 51.131257724733,
+      "lon": 71.426563795971
+    },
+    {
+      "id": "379d5591-eb02-45b1-b0b7-8407edfe55b4",
+      "name": "monument Baiterek",
+      "lat": 51.130015,
+      "lon": 71.434369
+    },
+    {
+      "id": "ec4e66cb-d30e-4e6a-9539-3051048f84da",
+      "name": "Dom Ministerstv",
+      "lat": 51.1287312958661,
+      "lon": 71.4389091285894
+    },
+    {
+      "id": "13c38731-1a07-40f0-a7ad-01c8539e2870",
+      "name": "Finansovyi tsentr",
+      "lat": 51.11695,
+      "lon": 71.434479
+    },
+    {
+      "id": "9e25e9c9-dd52-4436-ac0d-af6804369476",
+      "name": "ZhK Akzhaik",
+      "lat": 51.1120133191131,
+      "lon": 71.4324578982736
+    },
+    {
+      "id": "6cb18f4c-19a8-4fce-9bd3-f4b918a13d8a",
+      "name": "K'arlyg'ash balabak'shasy",
+      "lat": 51.108050533972666,
+      "lon": 71.4310605225266
+    },
+    {
+      "id": "e9a3808a-45e7-4f39-9379-763d701979e7",
+      "name": "Triumfal'naia arka Mangilik El",
+      "lat": 51.1038871,
+      "lon": 71.4295126
+    },
+    {
+      "id": "daee5445-ae51-4bce-89ef-291e7c3b9ae0",
+      "name": "ul. Bukhar zhyrau",
+      "lat": 51.098826,
+      "lon": 71.4277518
+    },
+    {
+      "id": "98d1a5a7-9d18-4401-bc23-d018dc3e432d",
+      "name": "ZhK Promenad Ekspo",
+      "lat": 51.093429,
+      "lon": 71.425912
+    },
+    {
+      "id": "e80c5cc3-6d22-4bb2-8697-2c901ad33137",
+      "name": "ZhK Orynbor Towers",
+      "lat": 51.0898113,
+      "lon": 71.4245711
+    },
+    {
+      "id": "ad14c406-b8c8-49e6-8ed4-426612e851e7",
+      "name": "Astana EKSPO",
+      "lat": 51.0855001,
+      "lon": 71.4230402
+    },
+    {
+      "id": "cb455c22-433c-415c-9dc6-4b38f567d97a",
+      "name": "ZhK Ekspo Siti",
+      "lat": 51.082013,
+      "lon": 71.421862
+    },
+    {
+      "id": "d14ef85c-0e16-4e07-ba92-b1eef3a17499",
+      "name": "Bol'nitsa Meditsinskogo tsentra UDP RK",
+      "lat": 51.0780728,
+      "lon": 71.4203477
+    },
+    {
+      "id": "83e469fd-55cf-4299-8bb7-1307181ae453",
+      "name": "E 495",
+      "lat": 51.0748255,
+      "lon": 71.4191817
+    },
+    {
+      "id": "024dc66b-2cc2-4c58-9482-caa7068d6eb2",
+      "name": "Detskii sad Karlygash",
+      "lat": 51.07101538085358,
+      "lon": 71.41783477700184
+    },
+    {
+      "id": "09b35dc0-2e95-4c03-b488-5eda1557f68b",
+      "name": "Ulitsa Birzhan sal",
+      "lat": 51.190696721868,
+      "lon": 71.40867294591281
+    },
+    {
+      "id": "d81e04ca-9213-4363-b2d1-34580954fc9e",
+      "name": "Ulitsa Il'iasa Esenberlina",
+      "lat": 51.189515,
+      "lon": 71.412379
+    },
+    {
+      "id": "f61c6540-7d01-4563-a8a6-ef667d64ea20",
+      "name": "Agrotekhnicheskii universitet",
+      "lat": 51.18741276666992,
+      "lon": 71.41535943203712
+    },
+    {
+      "id": "4fddb84f-fb97-43b8-a619-e667607dc9de",
+      "name": "Meditsinskii universitet Astana",
+      "lat": 51.18070299651373,
+      "lon": 71.41718793734093
+    },
+    {
+      "id": "5ea2fd87-18be-448c-ba4a-011ed7449f1e",
+      "name": "Politekhnicheskii kolledzh",
+      "lat": 51.17573,
+      "lon": 71.418487
+    },
+    {
+      "id": "26d4ae3b-1b99-47f1-a819-0e4f77899d96",
+      "name": "ulitsa Karasu",
+      "lat": 51.20053675217712,
+      "lon": 71.33146497827295
+    },
+    {
+      "id": "fe9d6168-9e62-41bb-be9e-15853bdcfdfd",
+      "name": "Mu'sa dukeni",
+      "lat": 51.20019995904532,
+      "lon": 71.33617625429603
+    },
+    {
+      "id": "2dd9aae5-9429-4599-9e2b-19909c7551da",
+      "name": "Tarbagatai",
+      "lat": 51.1992016089265,
+      "lon": 71.33253419309649
+    },
+    {
+      "id": "80f1899c-9a53-40c5-8e75-a2f6c1d74d82",
+      "name": "Aktobe",
+      "lat": 51.19803194321285,
+      "lon": 71.32954210029943
+    },
+    {
+      "id": "fe63a582-29bc-419b-8a03-5c1757b45e87",
+      "name": "Ulytau",
+      "lat": 51.19553087377446,
+      "lon": 71.32675914734659
+    },
+    {
+      "id": "3c018a79-d48f-4d34-8f87-e5e6746013a9",
+      "name": "Gostinitsa Bakhyt",
+      "lat": 51.19402700372381,
+      "lon": 71.32210101291399
+    },
+    {
+      "id": "c901486e-6e2a-4bc5-a56b-ebe54673e704",
+      "name": "Keleshek",
+      "lat": 51.19078530654348,
+      "lon": 71.33363293842872
+    },
+    {
+      "id": "2bbe99d3-1cdd-4707-af05-4d07edcfb875",
+      "name": "Zhanakonys",
+      "lat": 51.18818770419222,
+      "lon": 71.3317412809883
+    },
+    {
+      "id": "88c76eb3-8629-453b-968f-d1aeaf15937f",
+      "name": "per. Taitobe",
+      "lat": 51.18698587437736,
+      "lon": 71.3364987698196
+    },
+    {
+      "id": "519996b9-34d3-4260-942e-88b48ca22623",
+      "name": "Ardagerler",
+      "lat": 51.184700901626975,
+      "lon": 71.34277427796226
+    },
+    {
+      "id": "2b2b7d9a-6879-45ea-9763-1fe18e018f2f",
+      "name": "Titova",
+      "lat": 51.183274919815695,
+      "lon": 71.34812943571903
+    },
+    {
+      "id": "64d084ee-3c50-4f86-a73b-39e127d3446f",
+      "name": "Shugyla",
+      "lat": 51.18288181770246,
+      "lon": 71.35116529462137
+    },
+    {
+      "id": "9f845f42-9eac-4e28-8502-fc9922b6c923",
+      "name": "Astana EKSPO",
+      "lat": 51.0846022,
+      "lon": 71.423319
+    },
+    {
+      "id": "1d53ab9f-c7f4-4aa4-b0f0-633962560cfa",
+      "name": "ZhK Orynbor Towers",
+      "lat": 51.0881047,
+      "lon": 71.4245778
+    },
+    {
+      "id": "4ef6c8ac-8173-4c76-b194-918e3c3d876f",
+      "name": "ZhK Promenad Ekspo",
+      "lat": 51.092836,
+      "lon": 71.426175
+    },
+    {
+      "id": "93f2e175-bd6e-43d4-8498-a0b68fa24560",
+      "name": "UDP",
+      "lat": 51.096743609202704,
+      "lon": 71.42762093877424
+    },
+    {
+      "id": "4efbf1dc-b4dc-46a4-9f0b-70f8d73ff6b2",
+      "name": "Bukhar zhyrau",
+      "lat": 51.100996,
+      "lon": 71.429179
+    },
+    {
+      "id": "9230cadb-e2b9-4939-8b6f-8be6d9da92c8",
+      "name": "Triumfal'naia arka Mangilik El",
+      "lat": 51.10488336936517,
+      "lon": 71.43071880091824
+    },
+    {
+      "id": "1552b0e1-bb57-49dc-b4cb-557a39df06b4",
+      "name": "K'arlyg'ash balabak'shasy",
+      "lat": 51.1097834,
+      "lon": 71.4324027
+    },
+    {
+      "id": "f5fa8abd-4d11-4331-9424-0c9638a34de4",
+      "name": "ZhK Akzhaik",
+      "lat": 51.114246,
+      "lon": 71.433985
+    },
+    {
+      "id": "f3a7aefe-7c9f-4391-8091-7df545584ac0",
+      "name": "Finansovyi tsentr",
+      "lat": 51.118202,
+      "lon": 71.435278
+    },
+    {
+      "id": "ffe7ac12-5298-4f2b-83e5-894509a544ed",
+      "name": "K'azak'kontsert im. Rozy Baglanovoi",
+      "lat": 51.1258281,
+      "lon": 71.4381327
+    },
+    {
+      "id": "2ca9397c-8bbe-40c0-9a6d-545216696cfe",
+      "name": "Dom ministerstv",
+      "lat": 51.129665748498,
+      "lon": 71.438057141919
+    },
+    {
+      "id": "06232fac-a185-48c0-8ac7-70a493306087",
+      "name": "Kazakhstan temir zholy",
+      "lat": 51.131714867879,
+      "lon": 71.424825989754
+    },
+    {
+      "id": "e9dc4756-2990-4fa3-a0b8-a04d6312f913",
+      "name": "Ulitsa  Dinmukhameda Kunaeva",
+      "lat": 51.132835188837,
+      "lon": 71.41794819554
+    },
+    {
+      "id": "f4570762-f53c-463c-89a4-87f4e916d5a3",
+      "name": "TRTs Khan Shatyr",
+      "lat": 51.1311545,
+      "lon": 71.4065528
+    },
+    {
+      "id": "1100a1f5-0017-4d32-a284-74289da87c19",
+      "name": "Teatr Astana Opera",
+      "lat": 51.136214,
+      "lon": 71.408445
+    },
+    {
+      "id": "b199b336-fc58-47ca-bf2e-34f180c3c111",
+      "name": "TRTs Saryarka",
+      "lat": 51.139728,
+      "lon": 71.409835
+    },
+    {
+      "id": "666cc2b2-73dc-4d32-afd1-1ce0b6280dd8",
+      "name": "TRTs KeruenCity",
+      "lat": 51.143945,
+      "lon": 71.411519
+    },
+    {
+      "id": "da885f37-5bc2-43d5-b95c-ef82447df886",
+      "name": "Korgalzhinskaia trassa",
+      "lat": 51.148229,
+      "lon": 71.412726
+    },
+    {
+      "id": "3f01777a-d987-4808-83e3-80e0193ebb62",
+      "name": "Park Astana",
+      "lat": 51.1531116,
+      "lon": 71.4127808
+    },
+    {
+      "id": "edf55deb-81ff-41ae-bec5-a5a7b2cf5230",
+      "name": "Ulitsa Kenesary",
+      "lat": 51.1621126,
+      "lon": 71.4102813
+    },
+    {
+      "id": "6aba57b3-2ccf-46aa-a877-7302fe66740e",
+      "name": "Shkola Zerde",
+      "lat": 51.1650228,
+      "lon": 71.4094638
+    },
+    {
+      "id": "4cc233c3-db14-4e65-b96b-91271c045f99",
+      "name": "Sportivnyi kompleks ABYROY",
+      "lat": 51.1697536,
+      "lon": 71.4080971
+    },
+    {
+      "id": "ce8054ef-6b41-439f-b763-a770a69cf95d",
+      "name": "Prospekt Saryarka",
+      "lat": 51.173858,
+      "lon": 71.407056
+    },
+    {
+      "id": "3d570ad2-db12-47d1-b15e-a33dfa403c56",
+      "name": "TD Koktem",
+      "lat": 51.175269,
+      "lon": 71.4084299
+    },
+    {
+      "id": "9c39bef4-78ba-41cc-af86-4e9cec3e06dd",
+      "name": "Shkola-litsei No. 15",
+      "lat": 51.179925,
+      "lon": 71.410194
+    },
+    {
+      "id": "15829acf-630a-4f13-9472-b6f8a679e0a8",
+      "name": "Ulitsa Moskovskaia",
+      "lat": 51.182389,
+      "lon": 71.4095289
+    },
+    {
+      "id": "df129513-5202-4119-963f-1090546d183d",
+      "name": "Ulitsa A. Moldagulovoi",
+      "lat": 51.185903,
+      "lon": 71.408547
+    },
+    {
+      "id": "0dfeaf23-1068-4a93-9666-5cc804d389a1",
+      "name": "Teatr Zhastar",
+      "lat": 51.189325,
+      "lon": 71.407519
+    },
+    {
+      "id": "e6719284-431b-4c10-bb30-4f2e99de2f98",
+      "name": "TD Daulet",
+      "lat": 51.1928527,
+      "lon": 71.4079089
+    },
+    {
+      "id": "63220f3a-eeb2-41ce-9cae-7157668360e9",
+      "name": "Zh/d vokzal Astana 1",
+      "lat": 51.1947805,
+      "lon": 71.4091279
+    },
+    {
+      "id": "3e758949-78d7-4c07-b00b-e81d572481ee",
+      "name": "Kanal Nura-Esil'",
+      "lat": 51.05996347269038,
+      "lon": 71.41264815638745
+    },
+    {
+      "id": "13a79ef8-965a-440a-be79-13f1aa3b7e6f",
+      "name": "zh/m Prigorodnyi",
+      "lat": 51.0426454,
+      "lon": 71.4311203
+    },
+    {
+      "id": "1617c71a-0c29-4ad2-b1b4-5ea952e80f75",
+      "name": "zh/m Prigorodnyi",
+      "lat": 51.0425143,
+      "lon": 71.4312896
+    },
+    {
+      "id": "4614db92-63be-4042-bc5a-4f82ce5d47fe",
+      "name": "Kanal Nura-Esil'",
+      "lat": 51.06046711783695,
+      "lon": 71.41223537793292
+    },
+    {
+      "id": "bc3e6bd7-08c3-470f-9c82-e483399884de",
+      "name": "ZhK Family Park",
+      "lat": 51.06427638090455,
+      "lon": 71.40615727523895
+    },
+    {
+      "id": "bf5784b8-65f2-46b7-824e-78e29e38f3d1",
+      "name": "Karkaralinskoe shosse",
+      "lat": 51.06813494929981,
+      "lon": 71.39996701455095
+    },
+    {
+      "id": "0a75a06f-8e5d-48f2-ac85-8211908d4c41",
+      "name": "Stella Zvezda Astany",
+      "lat": 51.0743025,
+      "lon": 71.3975068
+    },
+    {
+      "id": "a57b56fd-5f03-4ce5-bbef-6bcc23035352",
+      "name": "Tsentral'nyi gospital'",
+      "lat": 51.08336752476138,
+      "lon": 71.40059277310509
+    },
+    {
+      "id": "ccd5e97f-c483-4209-96d7-8d64466fdc26",
+      "name": "Nazarbaev universitet",
+      "lat": 51.08988094333154,
+      "lon": 71.40294098607305
+    },
+    {
+      "id": "0354d63f-65ad-4bef-b2e1-b79439bb9f31",
+      "name": "ZhK Ekspo-Plaza",
+      "lat": 51.0939087,
+      "lon": 71.4045112
+    },
+    {
+      "id": "068882a1-be66-4fce-b012-98a2dd51acc8",
+      "name": "Ledovyi dvorets Alau",
+      "lat": 51.1007236,
+      "lon": 71.4068324
+    },
+    {
+      "id": "609457bf-32ed-4cae-8bc4-56c755311af4",
+      "name": "Stadion Astana-Arena",
+      "lat": 51.1084605,
+      "lon": 71.40968
+    },
+    {
+      "id": "c3484f80-419a-4ea3-9355-c33104abab7e",
+      "name": "E 319",
+      "lat": 51.0660456,
+      "lon": 71.4160309
+    },
+    {
+      "id": "4b830103-8b6e-4273-aedc-b4ca2c34dda8",
+      "name": "Kanal Nura-Esil'",
+      "lat": 51.0617062565548,
+      "lon": 71.414540446622
+    },
+    {
+      "id": "bc1ee4e3-ab3a-4b4f-81cd-46eba42d01df",
+      "name": "Sadovodcheskoe obshchestvo Aviator",
+      "lat": 51.05462397432345,
+      "lon": 71.42189604140914
+    },
+    {
+      "id": "b27e4484-f45f-490f-b75f-d3c0c5f01eba",
+      "name": "ul. Zhanadariia",
+      "lat": 51.04704157208384,
+      "lon": 71.43116576882497
+    },
+    {
+      "id": "953d5019-5468-4971-8712-6648eda53cfe",
+      "name": "Detskii sad Balbulak",
+      "lat": 51.0445846248775,
+      "lon": 71.4271008652745
+    },
+    {
+      "id": "0116b4d3-b09f-4091-8e8d-3363907905fa",
+      "name": "Sarytogai",
+      "lat": 51.042905252237496,
+      "lon": 71.42560161251365
+    },
+    {
+      "id": "9ee1bf93-fd79-4c3c-a63c-dae21572b98a",
+      "name": "sredniaia shkola No. 24",
+      "lat": 51.0417836474827,
+      "lon": 71.4285087766178
+    },
+    {
+      "id": "28407e90-671f-482f-95f4-c692dd4d1e90",
+      "name": "Ulitsa Arnasai",
+      "lat": 51.041765,
+      "lon": 71.433817
+    },
+    {
+      "id": "b42cb534-1201-4a4d-9b60-3774280e24fa",
+      "name": "Mechet' Al'zhan Ana",
+      "lat": 51.041761,
+      "lon": 71.437795
+    },
+    {
+      "id": "5dafe705-9a04-4727-a75e-7ed2195cfe2a",
+      "name": "Mezhdunarodnyi aeroport",
+      "lat": 51.0283122,
+      "lon": 71.4623786
+    },
+    {
+      "id": "0efb91bb-82ba-4082-a5d9-69e392b7510f",
+      "name": "Mezhdunarodnyi aeroport",
+      "lat": 51.0283122,
+      "lon": 71.4623786
+    },
+    {
+      "id": "eb69b78a-a836-40b3-8ca7-a7b8aaed7ec6",
+      "name": "Mechet' Al'zhan Ana",
+      "lat": 51.041884,
+      "lon": 71.438528
+    },
+    {
+      "id": "19d56c0b-6421-4f46-8ec3-2781ee8b93ec",
+      "name": "Ulitsa Arnasai",
+      "lat": 51.041854,
+      "lon": 71.432969
+    },
+    {
+      "id": "83a76452-75bb-411e-851e-9e07da361031",
+      "name": "sredniaia shkola No. 24",
+      "lat": 51.0419725292984,
+      "lon": 71.4275539102721
+    },
+    {
+      "id": "28764497-a568-434f-83dd-932a3c91e199",
+      "name": "Sarytogai",
+      "lat": 51.0459788,
+      "lon": 71.4312831
+    },
+    {
+      "id": "a4e48b15-9424-41b4-92a1-8331bbdd6863",
+      "name": "Detskii sad Balbulak",
+      "lat": 51.0445357926555,
+      "lon": 71.4286482514086
+    },
+    {
+      "id": "88b7ca3b-3501-4efe-b33f-701453ffa277",
+      "name": "ul. Zhanadariia",
+      "lat": 51.0459788,
+      "lon": 71.4312831
+    },
+    {
+      "id": "54623320-dd0b-452c-9ee8-9cf89671b8b0",
+      "name": "ZhK Aq-Jol",
+      "lat": 51.04938026082487,
+      "lon": 71.43015536518286
+    },
+    {
+      "id": "a6d09382-75f3-4706-85e8-2a5b775af30c",
+      "name": "Sadovodcheskoe obshchestvo Aviator",
+      "lat": 51.0548706,
+      "lon": 71.4213864
+    },
+    {
+      "id": "ea8a20e2-6aea-407c-b42b-f9c55439718b",
+      "name": "Kanal Nura-Esil'",
+      "lat": 51.0615023987215,
+      "lon": 71.4148961572331
+    },
+    {
+      "id": "fc4e269d-3cc0-46fd-87b7-4ae1ac9e2361",
+      "name": "E 319",
+      "lat": 51.0672733,
+      "lon": 71.4171086
+    },
+    {
+      "id": "a78b2c1d-ec83-4c0d-90b1-97d4136ebaae",
+      "name": "Detskii sad Karlygash-2",
+      "lat": 51.07175029326442,
+      "lon": 71.4186724325044
+    },
+    {
+      "id": "ddc8cb38-d19d-43a5-8f21-eb761485ed15",
+      "name": "Bol'nitsa Meditsinskogo tsentra UDP RK",
+      "lat": 51.0760551,
+      "lon": 71.4202701
+    },
+    {
+      "id": "ef859046-109a-4362-9339-ca295f511796",
+      "name": "ZhK Ekspo Siti",
+      "lat": 51.080955,
+      "lon": 71.421862
+    },
+    {
+      "id": "90bbca78-c461-4348-9ec8-4911c68a3ae3",
+      "name": "Biznes tsentr Marden",
+      "lat": 51.17090726261565,
+      "lon": 71.42187490281339
+    },
+    {
+      "id": "639393f6-22fb-4ab6-a13d-98f9131736b2",
+      "name": "Narodnyi bank",
+      "lat": 51.167332,
+      "lon": 71.426572
+    },
+    {
+      "id": "e0edfbd5-454b-49aa-bd3f-9f55d679c2a4",
+      "name": "Ulitsa Amangel'dy Imanova",
+      "lat": 51.163984,
+      "lon": 71.427507
+    },
+    {
+      "id": "3abac3ba-87c0-480c-aa39-fc3ec081e9c6",
+      "name": "Zhanibek Tarkhana",
+      "lat": 51.1603409,
+      "lon": 71.4285696
+    },
+    {
+      "id": "4aed197d-2627-48aa-9191-4b45ed52ddbb",
+      "name": "Mikroraion Samal",
+      "lat": 51.15735543102864,
+      "lon": 71.42943772524505
+    },
+    {
+      "id": "f86c97bc-80c0-4a7e-bbc0-4dbff06148ab",
+      "name": "Park Atatiurk",
+      "lat": 51.1519050100361,
+      "lon": 71.43877488322552
+    },
+    {
+      "id": "7e094e15-7fe2-424d-be5d-c650a7eaac09",
+      "name": "Ulitsa Amman",
+      "lat": 51.15066250426209,
+      "lon": 71.44443845599713
+    },
+    {
+      "id": "0c611096-98ec-4284-85e1-68523f4436d3",
+      "name": "Dom ministerstv",
+      "lat": 51.129665748498354,
+      "lon": 71.43805714191865
+    },
+    {
+      "id": "cac60a34-335b-43a0-aeb1-8d57a154facc",
+      "name": "Kardiokhirurgicheskaia klinika",
+      "lat": 51.127682,
+      "lon": 71.413143
+    },
+    {
+      "id": "bf58aae9-f17c-4eb5-b280-bd59ef34e7d4",
+      "name": "Tsentr neirokhirurgii",
+      "lat": 51.122751,
+      "lon": 71.412388
+    },
+    {
+      "id": "edca5c3c-a4bf-4aad-b25a-fa60e056cb86",
+      "name": "Biznes tsentr Asyl-Tau",
+      "lat": 51.117798,
+      "lon": 71.411521
+    },
+    {
+      "id": "c885bb33-9730-4071-9429-8ad8e56f4a7e",
+      "name": "Dvorets edinoborstv im. Zhaksylyka Ushkempirova",
+      "lat": 51.1137412,
+      "lon": 71.4108454
+    },
+    {
+      "id": "25160f65-5b76-42df-8126-ba7e0dca32d0",
+      "name": "Stadion Astana-Arena",
+      "lat": 51.106637,
+      "lon": 71.408628
+    },
+    {
+      "id": "8d5505db-a9f3-4d54-9b9e-bfd7f6e60265",
+      "name": "Ledovyi dvorets Alau",
+      "lat": 51.100272,
+      "lon": 71.406344
+    },
+    {
+      "id": "ad8964a3-38aa-4ec7-be27-55d4fa8437de",
+      "name": "ZhK Ekspo-Plaza",
+      "lat": 51.0924187,
+      "lon": 71.4034923
+    },
+    {
+      "id": "12cabd75-d75d-4b82-8364-770c7812d47f",
+      "name": "Nazarbaev universitet",
+      "lat": 51.089197,
+      "lon": 71.402369
+    },
+    {
+      "id": "a63cf9b0-b800-4694-9701-ff96efc9a37d",
+      "name": "Tsentral'nyi gospital'",
+      "lat": 51.081376,
+      "lon": 71.399555
+    },
+    {
+      "id": "97fe4589-8e42-4006-b28b-a0fdb7f06199",
+      "name": "ZhK Budapesht",
+      "lat": 51.0783226321179,
+      "lon": 71.39844854977864
+    },
+    {
+      "id": "06eee664-f6eb-43f7-ac6a-de0d6e693a27",
+      "name": "Stela Zvezda Astany",
+      "lat": 51.073524,
+      "lon": 71.396747
+    },
+    {
+      "id": "04fd1fc3-b800-465a-be89-5367e0313d21",
+      "name": "Karkaralinskoe shosse",
+      "lat": 51.067075,
+      "lon": 71.401264
+    },
+    {
+      "id": "ccf9d9ab-2a88-4d8f-aa7d-4d3b7eaf7a50",
+      "name": "ZhK Family Park",
+      "lat": 51.063899,
+      "lon": 71.406409
+    },
+    {
+      "id": "cb981230-114b-4e6e-97a2-9234afcc4418",
+      "name": "Dvorets edinoborstv",
+      "lat": 51.112486,
+      "lon": 71.410926
+    },
+    {
+      "id": "d59b3173-0b00-4498-8684-00131374163c",
+      "name": "Biznes tsentr Asyl-Tau",
+      "lat": 51.11906056660345,
+      "lon": 71.41206247980513
+    },
+    {
+      "id": "af31f517-9fae-414c-918f-82aba623f587",
+      "name": "Tsentr neirokhirurgii",
+      "lat": 51.1235329,
+      "lon": 71.413003
+    },
+    {
+      "id": "68738775-8984-47fb-a284-7b3a3e2a54cf",
+      "name": "Ulitsa  Dinmukhameda Kunaeva",
+      "lat": 51.132429151497696,
+      "lon": 71.4191769888362
+    },
+    {
+      "id": "542282bd-62d3-4c68-8246-e81186171837",
+      "name": "Kazakhstan temir zholy",
+      "lat": 51.13125772473301,
+      "lon": 71.42656379597092
+    },
+    {
+      "id": "1cebd4f9-b4db-4bed-8f51-5a5b7f3ab5e3",
+      "name": "ZhK Milanskii kvartal",
+      "lat": 51.1423416137695,
+      "lon": 71.4453125
+    },
+    {
+      "id": "d32c99c4-e064-4c62-a74e-fdfd54f9341c",
+      "name": "Ulitsa Zhumabeka Tashenova",
+      "lat": 51.152045,
+      "lon": 71.443195
+    },
+    {
+      "id": "e0b23f68-0123-40e5-ac0d-71b4af6b7274",
+      "name": "Ulitsa Amman",
+      "lat": 51.14913804772117,
+      "lon": 71.44483251441223
+    },
+    {
+      "id": "acabcf72-2a19-4891-979d-01cbd346878d",
+      "name": "Park Atatiurk",
+      "lat": 51.152195,
+      "lon": 71.437263
+    },
+    {
+      "id": "527f6d97-4b07-45e8-b2d8-794dbc40075b",
+      "name": "Mikroraion Samal",
+      "lat": 51.158010208850655,
+      "lon": 71.42966715476112
+    },
+    {
+      "id": "d78e223c-3a67-42db-91eb-12858d261cb0",
+      "name": "Ulitsa Amangel'dy Imanova",
+      "lat": 51.161684,
+      "lon": 71.428652
+    },
+    {
+      "id": "27123abe-5a4f-4116-b048-4e2d32d8a104",
+      "name": "Narodnyi bank",
+      "lat": 51.16592521313496,
+      "lon": 71.42741371688713
+    },
+    {
+      "id": "fe106f1e-bc78-493a-a353-8ec1b0ab30aa",
+      "name": "Biznes tsentr Marden",
+      "lat": 51.171026,
+      "lon": 71.421858
+    },
+    {
+      "id": "c07d5a37-7945-403c-83a0-a6a84c87944c",
+      "name": "Alibi Zhangel'dina",
+      "lat": 51.1729313,
+      "lon": 71.4195984
+    },
+    {
+      "id": "180c6cec-9a94-4a62-a902-168555638d9c",
+      "name": "Politekhnicheskii kolledzh",
+      "lat": 51.1773011,
+      "lon": 71.4184919
+    },
+    {
+      "id": "de17c14c-a026-47c4-9c55-d1729bf48ce6",
+      "name": "Meditsinskii universitet Astana",
+      "lat": 51.18281833714914,
+      "lon": 71.4167922032089
+    },
+    {
+      "id": "782c5de3-4a10-4129-9dfb-8f19e6c95a25",
+      "name": "Agrotekhnicheskii universitet",
+      "lat": 51.186782,
+      "lon": 71.415691
+    },
+    {
+      "id": "04530e5f-9e64-4ae3-a962-589640451d45",
+      "name": "Il'iasa Esenberlina",
+      "lat": 51.1892869,
+      "lon": 71.4137662
+    },
+    {
+      "id": "6b2eda8b-de4f-4bae-b178-d19e439922d7",
+      "name": "Ulitsa Birzhan sal",
+      "lat": 51.190910339,
+      "lon": 71.40836334
+    },
+    {
+      "id": "623fcc14-2417-4d31-84b9-ec08483a12ea",
+      "name": "TD Daulet",
+      "lat": 51.1928527,
+      "lon": 71.4079089
+    }
+  ],
+  "routeMatches": {
+    "10": {
+      "0": "24da8f75-2dc4-4a5d-becc-2898122eaae5",
+      "1": "09b35dc0-2e95-4c03-b488-5eda1557f68b",
+      "2": "d81e04ca-9213-4363-b2d1-34580954fc9e",
+      "3": "f61c6540-7d01-4563-a8a6-ef667d64ea20",
+      "4": "4fddb84f-fb97-43b8-a619-e667607dc9de",
+      "5": "5ea2fd87-18be-448c-ba4a-011ed7449f1e",
+      "6": "90bbca78-c461-4348-9ec8-4911c68a3ae3",
+      "7": "639393f6-22fb-4ab6-a13d-98f9131736b2",
+      "8": "e0edfbd5-454b-49aa-bd3f-9f55d679c2a4",
+      "9": "3abac3ba-87c0-480c-aa39-fc3ec081e9c6",
+      "10": "4aed197d-2627-48aa-9191-4b45ed52ddbb",
+      "11": "f86c97bc-80c0-4a7e-bbc0-4dbff06148ab",
+      "12": "7e094e15-7fe2-424d-be5d-c650a7eaac09",
+      "13": "0c611096-98ec-4284-85e1-68523f4436d3",
+      "14": "6de59510-6e48-4efa-8459-b2c0d2766247",
+      "15": "160e90a6-0ebf-42f5-801d-bc26323a7705",
+      "16": "cac60a34-335b-43a0-aeb1-8d57a154facc",
+      "17": "bf58aae9-f17c-4eb5-b280-bd59ef34e7d4",
+      "18": "edca5c3c-a4bf-4aad-b25a-fa60e056cb86",
+      "19": "c885bb33-9730-4071-9429-8ad8e56f4a7e",
+      "20": "25160f65-5b76-42df-8126-ba7e0dca32d0",
+      "21": "8d5505db-a9f3-4d54-9b9e-bfd7f6e60265",
+      "22": "ad8964a3-38aa-4ec7-be27-55d4fa8437de",
+      "23": "12cabd75-d75d-4b82-8364-770c7812d47f",
+      "25": "97fe4589-8e42-4006-b28b-a0fdb7f06199",
+      "26": "06eee664-f6eb-43f7-ac6a-de0d6e693a27",
+      "27": "04fd1fc3-b800-465a-be89-5367e0313d21",
+      "28": "ccf9d9ab-2a88-4d8f-aa7d-4d3b7eaf7a50",
+      "29": "3e758949-78d7-4c07-b00b-e81d572481ee",
+      "30": "bc1ee4e3-ab3a-4b4f-81cd-46eba42d01df",
+      "31": "b27e4484-f45f-490f-b75f-d3c0c5f01eba",
+      "32": "13a79ef8-965a-440a-be79-13f1aa3b7e6f",
+      "33": "28407e90-671f-482f-95f4-c692dd4d1e90",
+      "34": "b42cb534-1201-4a4d-9b60-3774280e24fa",
+      "35": "5dafe705-9a04-4727-a75e-7ed2195cfe2a"
+    },
+    "501": {
+      "7": "a10b4fa3-0b47-4297-b29b-4d16b670ca00",
+      "14": "ccf9d9ab-2a88-4d8f-aa7d-4d3b7eaf7a50",
+      "15": "bc1ee4e3-ab3a-4b4f-81cd-46eba42d01df",
+      "16": "13a79ef8-965a-440a-be79-13f1aa3b7e6f",
+      "17": "5dafe705-9a04-4727-a75e-7ed2195cfe2a"
+    },
+    "40": {
+      "1": "cb455c22-433c-415c-9dc6-4b38f567d97a",
+      "5": "12cabd75-d75d-4b82-8364-770c7812d47f",
+      "6": "0c611096-98ec-4284-85e1-68523f4436d3"
+    },
+    "53": {
+      "1": "cb455c22-433c-415c-9dc6-4b38f567d97a",
+      "5": "12cabd75-d75d-4b82-8364-770c7812d47f"
+    }
+  },
+  "matchesEvidence": {
+    "10": {
+      "0": {
+        "appName": "Ж/д вокзал Астана 1",
+        "sourceName": "Zh/d vokzal Astana 1",
+        "stopId": "24da8f75-2dc4-4a5d-becc-2898122eaae5",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 1,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "1": {
+        "appName": "Биржан сал",
+        "sourceName": "Ulitsa Birzhan sal",
+        "stopId": "09b35dc0-2e95-4c03-b488-5eda1557f68b",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3317,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "2": {
+        "appName": "Ильяса Есенберлина",
+        "sourceName": "Ulitsa Il'iasa Esenberlina",
+        "stopId": "d81e04ca-9213-4363-b2d1-34580954fc9e",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3333,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "3": {
+        "appName": "Агротехнический университет",
+        "sourceName": "Agrotekhnicheskii universitet",
+        "stopId": "f61c6540-7d01-4563-a8a6-ef667d64ea20",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3335,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "4": {
+        "appName": "Медицинский университет Астана",
+        "sourceName": "Meditsinskii universitet Astana",
+        "stopId": "4fddb84f-fb97-43b8-a619-e667607dc9de",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3334,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "5": {
+        "appName": "Политехнический колледж",
+        "sourceName": "Politekhnicheskii kolledzh",
+        "stopId": "5ea2fd87-18be-448c-ba4a-011ed7449f1e",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3335,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "6": {
+        "appName": "БЦ Марден",
+        "sourceName": "Biznes tsentr Marden",
+        "stopId": "90bbca78-c461-4348-9ec8-4911c68a3ae3",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3334,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "7": {
+        "appName": "Народный банк",
+        "sourceName": "Narodnyi bank",
+        "stopId": "639393f6-22fb-4ab6-a13d-98f9131736b2",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3335,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "8": {
+        "appName": "Амангельды Иманова",
+        "sourceName": "Ulitsa Amangel'dy Imanova",
+        "stopId": "e0edfbd5-454b-49aa-bd3f-9f55d679c2a4",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3335,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "9": {
+        "appName": "Жанибек Тархана",
+        "sourceName": "Zhanibek Tarkhana",
+        "stopId": "3abac3ba-87c0-480c-aa39-fc3ec081e9c6",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3332,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "10": {
+        "appName": "Микрорайон Самал",
+        "sourceName": "Mikroraion Samal",
+        "stopId": "4aed197d-2627-48aa-9191-4b45ed52ddbb",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3332,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "11": {
+        "appName": "Парк Ататюрк",
+        "sourceName": "Park Atatiurk",
+        "stopId": "f86c97bc-80c0-4a7e-bbc0-4dbff06148ab",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3331,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "12": {
+        "appName": "Амман",
+        "sourceName": "Ulitsa Amman",
+        "stopId": "7e094e15-7fe2-424d-be5d-c650a7eaac09",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3331,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "13": {
+        "appName": "Дом Министерств",
+        "sourceName": "Dom ministerstv",
+        "stopId": "0c611096-98ec-4284-85e1-68523f4436d3",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3332,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": [
+          "ec4e66cb-d30e-4e6a-9539-3051048f84da"
+        ]
+      },
+      "14": {
+        "appName": "НК Казахстан Темир Жолы",
+        "sourceName": "Kazakhstan temir zholy",
+        "stopId": "6de59510-6e48-4efa-8459-b2c0d2766247",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3253,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "15": {
+        "appName": "Динмухамеда Кунаева",
+        "sourceName": "Ulitsa  Dinmukhameda Kunaeva",
+        "stopId": "160e90a6-0ebf-42f5-801d-bc26323a7705",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3200,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "16": {
+        "appName": "Кардиохирургическая клиника",
+        "sourceName": "Kardiokhirurgicheskaia klinika",
+        "stopId": "cac60a34-335b-43a0-aeb1-8d57a154facc",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3334,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": [
+          "870084cf-ed0b-4bbd-bea0-368b5bce2425"
+        ]
+      },
+      "17": {
+        "appName": "Центр нейрохирургии",
+        "sourceName": "Tsentr neirokhirurgii",
+        "stopId": "bf58aae9-f17c-4eb5-b280-bd59ef34e7d4",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3330,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "18": {
+        "appName": "БЦ Асыл-тау",
+        "sourceName": "Biznes tsentr Asyl-Tau",
+        "stopId": "edca5c3c-a4bf-4aad-b25a-fa60e056cb86",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3335,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "19": {
+        "appName": "Дворец единоборств им. Жаксылыка Ушкемпирова",
+        "sourceName": "Dvorets edinoborstv im. Zhaksylyka Ushkempirova",
+        "stopId": "c885bb33-9730-4071-9429-8ad8e56f4a7e",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3325,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "20": {
+        "appName": "Стадион Астана-Арена",
+        "sourceName": "Stadion Astana-Arena",
+        "stopId": "25160f65-5b76-42df-8126-ba7e0dca32d0",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3335,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "21": {
+        "appName": "Ледовый дворец Алау",
+        "sourceName": "Ledovyi dvorets Alau",
+        "stopId": "8d5505db-a9f3-4d54-9b9e-bfd7f6e60265",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3335,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "22": {
+        "appName": "ЖК Экспо-Плаза",
+        "sourceName": "ZhK Ekspo-Plaza",
+        "stopId": "ad8964a3-38aa-4ec7-be27-55d4fa8437de",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3335,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "23": {
+        "appName": "Назарбаев университет",
+        "sourceName": "Nazarbaev universitet",
+        "stopId": "12cabd75-d75d-4b82-8364-770c7812d47f",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3335,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "25": {
+        "appName": "ЖК Будапешт",
+        "sourceName": "ZhK Budapesht",
+        "stopId": "97fe4589-8e42-4006-b28b-a0fdb7f06199",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3033,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "26": {
+        "appName": "Стелла Звезда Астаны",
+        "sourceName": "Stela Zvezda Astany",
+        "stopId": "06eee664-f6eb-43f7-ac6a-de0d6e693a27",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3054,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "27": {
+        "appName": "Шоссе Каркаралы",
+        "sourceName": "Karkaralinskoe shosse",
+        "stopId": "04fd1fc3-b800-465a-be89-5367e0313d21",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3046,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "28": {
+        "appName": "ЖК Family Park",
+        "sourceName": "ZhK Family Park",
+        "stopId": "ccf9d9ab-2a88-4d8f-aa7d-4d3b7eaf7a50",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3048,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "29": {
+        "appName": "Канал Нура-Есиль",
+        "sourceName": "Kanal Nura-Esil'",
+        "stopId": "3e758949-78d7-4c07-b00b-e81d572481ee",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3053,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": [
+          "4b830103-8b6e-4273-aedc-b4ca2c34dda8"
+        ]
+      },
+      "30": {
+        "appName": "Садоводческое общество Авиатор",
+        "sourceName": "Sadovodcheskoe obshchestvo Aviator",
+        "stopId": "bc1ee4e3-ab3a-4b4f-81cd-46eba42d01df",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 2187,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "31": {
+        "appName": "ул. Жандария",
+        "sourceName": "ul. Zhanadariia",
+        "stopId": "b27e4484-f45f-490f-b75f-d3c0c5f01eba",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3334,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "32": {
+        "appName": "ж/м Пригородный",
+        "sourceName": "zh/m Prigorodnyi",
+        "stopId": "13a79ef8-965a-440a-be79-13f1aa3b7e6f",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3303,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "33": {
+        "appName": "Арнасай",
+        "sourceName": "Ulitsa Arnasai",
+        "stopId": "28407e90-671f-482f-95f4-c692dd4d1e90",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3333,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "34": {
+        "appName": "Мечеть Альжан Ана",
+        "sourceName": "Mechet' Al'zhan Ana",
+        "stopId": "b42cb534-1201-4a4d-9b60-3774280e24fa",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3329,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      },
+      "35": {
+        "appName": "Международный аэропорт",
+        "sourceName": "Mezhdunarodnyi aeroport",
+        "stopId": "5dafe705-9a04-4727-a75e-7ed2195cfe2a",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 80,
+        "routeMembershipConfirmed": true,
+        "directionForAppRouteConfirmed": true,
+        "ambiguousSameNameStopIds": []
+      }
+    },
+    "501": {
+      "7": {
+        "appName": "Хан-Шатыр СОО",
+        "sourceName": "TRTs Khan Shatyr",
+        "stopId": "a10b4fa3-0b47-4297-b29b-4d16b670ca00",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 1,
+        "routeMembershipConfirmed": false,
+        "directionForAppRouteConfirmed": false,
+        "ambiguousSameNameStopIds": []
+      },
+      "14": {
+        "appName": "Family Park тұрғын үй кешені",
+        "sourceName": "ZhK Family Park",
+        "stopId": "ccf9d9ab-2a88-4d8f-aa7d-4d3b7eaf7a50",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3048,
+        "routeMembershipConfirmed": false,
+        "directionForAppRouteConfirmed": false,
+        "ambiguousSameNameStopIds": []
+      },
+      "15": {
+        "appName": "Авиатор саяжай қоғамы",
+        "sourceName": "Sadovodcheskoe obshchestvo Aviator",
+        "stopId": "bc1ee4e3-ab3a-4b4f-81cd-46eba42d01df",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 2187,
+        "routeMembershipConfirmed": false,
+        "directionForAppRouteConfirmed": false,
+        "ambiguousSameNameStopIds": []
+      },
+      "16": {
+        "appName": "Пригородный Т/А",
+        "sourceName": "zh/m Prigorodnyi",
+        "stopId": "13a79ef8-965a-440a-be79-13f1aa3b7e6f",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3303,
+        "routeMembershipConfirmed": false,
+        "directionForAppRouteConfirmed": false,
+        "ambiguousSameNameStopIds": []
+      },
+      "17": {
+        "appName": "Халықаралық әуежай",
+        "sourceName": "Mezhdunarodnyi aeroport",
+        "stopId": "5dafe705-9a04-4727-a75e-7ed2195cfe2a",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 80,
+        "routeMembershipConfirmed": false,
+        "directionForAppRouteConfirmed": false,
+        "ambiguousSameNameStopIds": []
+      }
+    },
+    "40": {
+      "1": {
+        "appName": "ЭКСПО Сити",
+        "sourceName": "ZhK Ekspo Siti",
+        "stopId": "cb455c22-433c-415c-9dc6-4b38f567d97a",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 290,
+        "routeMembershipConfirmed": false,
+        "directionForAppRouteConfirmed": false,
+        "ambiguousSameNameStopIds": []
+      },
+      "5": {
+        "appName": "Назарбаев университеті",
+        "sourceName": "Nazarbaev universitet",
+        "stopId": "12cabd75-d75d-4b82-8364-770c7812d47f",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3335,
+        "routeMembershipConfirmed": false,
+        "directionForAppRouteConfirmed": false,
+        "ambiguousSameNameStopIds": []
+      },
+      "6": {
+        "appName": "Министрліктер үйі",
+        "sourceName": "Dom ministerstv",
+        "stopId": "0c611096-98ec-4284-85e1-68523f4436d3",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3332,
+        "routeMembershipConfirmed": false,
+        "directionForAppRouteConfirmed": false,
+        "ambiguousSameNameStopIds": [
+          "ec4e66cb-d30e-4e6a-9539-3051048f84da"
+        ]
+      }
+    },
+    "53": {
+      "1": {
+        "appName": "ЭКСПО Сити",
+        "sourceName": "ZhK Ekspo Siti",
+        "stopId": "cb455c22-433c-415c-9dc6-4b38f567d97a",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 290,
+        "routeMembershipConfirmed": false,
+        "directionForAppRouteConfirmed": false,
+        "ambiguousSameNameStopIds": []
+      },
+      "5": {
+        "appName": "Назарбаев университеті",
+        "sourceName": "Nazarbaev universitet",
+        "stopId": "12cabd75-d75d-4b82-8364-770c7812d47f",
+        "method": "Name transliteration/translation; selected most observed same-name source stop in historical route 10 direction 1.",
+        "route10Direction1Observations": 3335,
+        "routeMembershipConfirmed": false,
+        "directionForAppRouteConfirmed": false,
+        "ambiguousSameNameStopIds": []
+      }
+    }
+  },
+  "unmatchedStops": {
+    "10": [
+      {
+        "index": 24,
+        "name": "Центральный госпиталь МВД РК",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      }
+    ],
+    "501": [
+      {
+        "index": 0,
+        "name": "Абайдың 150-жылдығы көшесі",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 1,
+        "name": "Ақан сері көшесі",
+        "reason": "Stop name present, but source stop side not verified for this app route",
+        "candidateSourceName": "Akan Sery"
+      },
+      {
+        "index": 2,
+        "name": "№18 орта мектеп",
+        "reason": "Stop name present, but source stop side not verified for this app route",
+        "candidateSourceName": "Sredniaia shkola No. 18"
+      },
+      {
+        "index": 3,
+        "name": "AVRUO спорт кешені",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 4,
+        "name": "Кенесары көшесі",
+        "reason": "Stop name present, but source stop side not verified for this app route",
+        "candidateSourceName": "Ulitsa Kenesary"
+      },
+      {
+        "index": 5,
+        "name": "Астана саябағы",
+        "reason": "Stop name present, but source stop side not verified for this app route",
+        "candidateSourceName": "Park Astana"
+      },
+      {
+        "index": 6,
+        "name": "KeruenCity СОО",
+        "reason": "Stop name present, but source stop side not verified for this app route",
+        "candidateSourceName": "TRTs KeruenCity"
+      },
+      {
+        "index": 8,
+        "name": "Ұлттық кардиология орталығы",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 9,
+        "name": "Ана мен бала орталығы",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 10,
+        "name": "Square бизнес орталығы",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 11,
+        "name": "Научный Т/К",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 12,
+        "name": "Назарбаев Университет жатақханасы",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 13,
+        "name": "Ғарыш орталығы",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      }
+    ],
+    "40": [
+      {
+        "index": 0,
+        "name": "Клиникалық-оңалту кешені",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 2,
+        "name": "№1 перинаталдық орталығы",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 3,
+        "name": "№2 қалалық аурухана",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 4,
+        "name": "Тұран даңғылы",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 7,
+        "name": "Жастар сарайы",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 8,
+        "name": "№22 мектеп-гимназиясы",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 9,
+        "name": "Теміржол вокзалы",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      }
+    ],
+    "53": [
+      {
+        "index": 0,
+        "name": "Клиникалық-оңалту кешені",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 2,
+        "name": "№1 перинаталдық орталығы",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 3,
+        "name": "№2 қалалық аурухана",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 4,
+        "name": "Тұран даңғылы",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 6,
+        "name": "Сарыарқа көшесі",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 7,
+        "name": "Астана базары",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 8,
+        "name": "Жастар сарайы",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 9,
+        "name": "№2 мектеп",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      },
+      {
+        "index": 10,
+        "name": "Теміржол вокзалы",
+        "reason": "No source name match",
+        "candidateSourceName": null
+      }
+    ]
+  },
+  "matchingNotes": [
+    "Coordinates copied exactly from published GTFS, never invented or interpolated.",
+    "App route 10 matches are selected using direction_id=1 source stop_times observation counts, 3335 historical trips.",
+    "Non10 matches only identify the same named physical stop from route10 direction1. They do not verify routes 501, 40 or 53 serving that point or establish their stop side.",
+    "Exact literal Cyrillic-name matches: 0; accepted matches use explicit transliteration/translation mappings.",
+    "Route10 stop 16 has two source stop IDs with the same name and many observations. Primary candidate is the first encountered stop in the source ordered sequence; app has only one instance. This is a source-name ambiguity, not fabricated data."
+  ]
+}
