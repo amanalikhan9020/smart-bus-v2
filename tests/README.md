@@ -29,7 +29,9 @@ sandbox may require the supported escalation flow for local sockets/Chromium.
 Checks cover the complete scenario, selected-trip persistence and deletion,
 data-derived analytics, required/secondary validation, local password derivation
 and legacy-account migration (including recovery of old spaces-only passwords),
-account separation, midnight/ties, original routes
-and analytics, inert HTML data, corrupt storage, quota failures, navigation and
+account separation, midnight/ties, all six route selectors, historical routes 12
+and 46 with source-verified stop order and coordinates, their comparison/save/
+filter/analytics flows, distinct same-named stops, inert HTML data, corrupt storage,
+quota failures, navigation and
 mobile page width. Every test also checks for uncaught JavaScript errors and failed
 HTTP responses. A nonzero exit status means a check failed; do not suppress it.

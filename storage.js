@@ -303,13 +303,17 @@
         ![0, 1].includes(trip.dayOffset ?? 0)) {
       throw new Error("Trip data is incomplete or invalid. Select a valid route, stop and time, then predict again. Existing trips were kept.");
     }
+    if (trip.stopIndex !== undefined && (!Number.isInteger(trip.stopIndex) || trip.stopIndex < 0)) {
+      throw new Error("Trip stop index is invalid. Existing trips were kept.");
+    }
     // The app loads its route model before using storage. Keep this optional so
     // the storage module can also be exercised independently of the interface.
     const routes = window.SmartBusModel?.ROUTES;
     if (routes && (!Object.prototype.hasOwnProperty.call(routes, trip.routeId) ||
         routes[trip.routeId].name !== trip.routeName ||
         routes[trip.routeId].capacity !== trip.capacity ||
-        !routes[trip.routeId].stops.includes(trip.stop))) {
+        !routes[trip.routeId].stops.includes(trip.stop) ||
+        trip.stopIndex !== undefined && routes[trip.routeId].stops[trip.stopIndex] !== trip.stop)) {
       throw new Error("Trip route, stop or capacity does not match the route data. Existing trips were kept; restore valid trip data before continuing.");
     }
     return {
@@ -317,6 +321,7 @@
       routeId: trip.routeId,
       routeName: trip.routeName,
       stop: trip.stop,
+      ...(trip.stopIndex !== undefined ? { stopIndex: trip.stopIndex } : {}),
       time: trip.time,
       dayOffset: trip.dayOffset ?? 0,
       occupancy: trip.occupancy,
@@ -340,7 +345,8 @@
     if (!user) throw new Error("Log in or continue as guest before saving a trip.");
     const clean = validateTrip(trip);
     const trips = getTrips();
-    if (trips.some(item => item.routeId === clean.routeId && item.stop === clean.stop &&
+    if (trips.some(item => item.routeId === clean.routeId &&
+        (item.stopIndex !== undefined && clean.stopIndex !== undefined ? item.stopIndex === clean.stopIndex : item.stop === clean.stop) &&
         item.time === clean.time && item.dayOffset === clean.dayOffset)) {
       throw new Error("This trip is already saved. Open Saved Trips to view it.");
     }

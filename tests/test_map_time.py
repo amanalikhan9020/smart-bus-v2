@@ -62,7 +62,7 @@ class MapAndTimeTests(unittest.TestCase):
     def load(self):
         response = self.page.goto(BASE_URL, wait_until="networkidle")
         self.assertEqual(response.status, 200)
-        expect(self.page.locator("#routeSelect option")).to_have_count(4)
+        expect(self.page.locator("#routeSelect option")).to_have_count(6)
         expect(self.page.locator("#routeMap.leaflet-container")).to_have_count(1)
         expect(self.page.locator("#routeMap")).to_have_attribute("data-map-state", "ready")
 

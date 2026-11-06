@@ -123,6 +123,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     $(id).replaceChildren();
     if (all) $(id).append(new Option("All routes", "all"));
     Object.entries(ROUTES).forEach(([key, route]) => $(id).append(new Option(route.name, key)));
+    if (id === "routeSelect") $("routeCatalogMessage").textContent =
+      Object.keys(ROUTES).length + " routes available: " + Object.keys(ROUTES).join(", ") + ".";
   }
   function populateStops() {
     const route = ROUTES[$("routeSelect").value];
@@ -130,6 +132,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     $("stopSearch").value = "";
     $("stopsTitle").textContent = route.name + " stops";
     $("stopCount").textContent = route.stops.length + " stops";
+    $("routeCatalogMessage").textContent = Object.keys(ROUTES).length + " routes available: " + Object.keys(ROUTES).join(", ") + "." +
+      (route.source ? " Selected route uses a historical 2024 observed stop pattern; occupancy and vehicle capacity are simulated." : "");
     routeMap?.setRoute($("routeSelect").value, 0);
     renderStops(); predict();
   }
@@ -273,12 +277,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (!trips.length) $("savedTripsList").append(element("div", "No saved trips yet.", "empty-state"));
       trips.forEach(trip => {
         const row = element("article", undefined, "saved-trip");
-        for (const [label, value] of [["Route", trip.routeName], ["Stop", trip.stop], ["Time", trip.time + " · " + dayLabel(trip)], ["Occupancy", trip.occupancy + "%"]]) {
+        for (const [label, value] of [["Route", trip.routeName], ["Stop", trip.stop + (trip.stopIndex !== undefined ? " · Stop " + (trip.stopIndex + 1) : "")], ["Time", trip.time + " · " + dayLabel(trip)], ["Occupancy", trip.occupancy + "%"]]) {
           const cell = element("div");
           cell.append(element("small", label), element("strong", value)); row.append(cell);
         }
         const del = element("button", "Delete", "delete-btn");
-        del.setAttribute("aria-label", `Delete ${trip.routeName} at ${trip.time}`);
+        del.setAttribute("aria-label", `Delete ${trip.routeName} at ${trip.time}, ${trip.stop}${trip.stopIndex !== undefined ? ", stop " + (trip.stopIndex + 1) : ""}`);
         del.addEventListener("click", () => attempt(() => {
           store.deleteTrip(trip.id); renderSavedTrips(); updateSavedAnalytics();
           message("appMessage", "Trip deleted. Saved trip analytics updated.");

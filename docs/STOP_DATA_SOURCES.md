@@ -101,3 +101,23 @@ Non10 source-name matches do not verify membership in routes501/40/53. Side of r
 - astana-stops.json: app-ready source stops/metadata/matches.
 - matched-stop-candidates.json: all source candidates, including excluded duplicates.
 - bus-eta-uncertainty/data/gtfs_data: downloaded original data used for verification.
+
+
+## Additional route patterns: 12 and 46
+
+# Added historic route patterns 12 and 46
+
+Source: [kabuli-web/bus-eta-uncertainty](https://github.com/kabuli-web/bus-eta-uncertainty), GTFS files in `data/gtfs_data`. Research: [Mansurova et al. (2025)](https://doi.org/10.3390/data10080119). Data coverage: 2024-07-29–2024-09-21. These are historical observed trip patterns, not verified current service. License CC BY 4.0 is reported by [BusInsight attribution](https://github.com/Riyas-m-n/BusInsight#9-dataset--attribution); existing stop-source audit contains the primary-host-access limitation.
+
+| Route | GTFS route_id | Direction | Stops | Exact-pattern support | All observed trips in direction | Endpoints |
+|---|---|---|---|---|---|---|
+| 12 | c453217f-9f9d-49ce-8b32-14a6b7013691 | 1 | 39 | 890 | 2921 | Teatr Zhastar → Mechet' Al'zhan Ana |
+| 46 | a3d30efc-b517-4ed6-b6a7-f5a87a3d5fa0 | 1 | 41 | 489 | 3950 | Mu'sa dukeni → Karakat |
+
+Each trip was sorted by numeric `stop_sequence`; exact tuples of stop IDs were counted. The most frequent complete observed tuple for direction 1 was selected. No official full-route completeness is claimed. All 80 selected entries match the checked-in 201-stop table by exact ID. Different IDs with the same names are retained. Route 46 includes two different `Shugyla` stop IDs; both patterns include `Dom ministerstv` and `Dom Ministerstv` with different IDs. Coordinates are never invented.
+
+Route 12 source `route_long_name` is suspicious: it repeats route 10. Its number is verified by `route_short_name=12` and matching `trips.route_id`. We do not use the long name or claim the observed endpoints are its current termini.
+
+Capacity 100 is a labelled demonstration assumption in the artifact. Occupancy/time behavior is simulated; none is represented as measured capacity, live bus tracking or real passenger observations.
+
+`routes-12-46.json` includes route entries, zero-based index-to-source-ID matches, source metadata, representative trip IDs, all matching trip IDs for reproducibility and SHA-256 hashes of input files. `analysis.json` contains direction distributions and top pattern support.

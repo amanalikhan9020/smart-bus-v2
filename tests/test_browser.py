@@ -62,7 +62,7 @@ class SmartBusBrowserTests(unittest.TestCase):
             self.context.close()
 
     def ready(self):
-        expect(self.page.locator("#routeSelect option")).to_have_count(4)
+        expect(self.page.locator("#routeSelect option")).to_have_count(6)
         expect(self.page.locator("#predictBtn")).to_be_enabled()
 
     def navigate(self, page):
